@@ -13,8 +13,6 @@ public class LevelDev extends Employee {
     @Override
     public void doWork() {
         int secondsPerDay = 3;
-        System.out.println("Level dev started");
-        
         try {
             // Sleep while producing a narrative
             Thread.sleep(secondsPerDay * 1000 * this.daysPerLevel);

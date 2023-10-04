@@ -7,7 +7,7 @@ public class GameStudio extends Thread {
     LinkedList<Employee> employees;
     
     int employeesMax;
-    int nNarrativeDevs, nLevelDevs, nIntegrators;
+    int nNarrativeDevs, nLevelDevs, nIntegrators, nDLCDevs;
     int daysForNarrative, daysForLevel, spritesPerDay, sistemsPerDay, daysPerDLC;
     int rawProfits, operativeCosts, utility;
     
@@ -22,6 +22,7 @@ public class GameStudio extends Thread {
         this.nNarrativeDevs = 2;
         this.nLevelDevs = 3;
         this.nIntegrators = 2;
+        this.nDLCDevs = 1;
         
         // Set daysForNarrative, daysPerLevel and spritesPerDay
         if(carnetNumber >= 0 && carnetNumber < 3){
@@ -64,17 +65,17 @@ public class GameStudio extends Thread {
     public void run() {
        isRunning = true;
        
-       for(int i=0; i < nNarrativeDevs; i++){
+       for(int i=0; i < nNarrativeDevs; i++)
            employees.append(new NarrativeDev(daysForNarrative, this));
-       }
        
-       for(int i=0; i < nLevelDevs; i++){
+       for(int i=0; i < nLevelDevs; i++)
            employees.append(new LevelDev(daysForLevel, this));
-       }
        
-       for(int i=0; i < nIntegrators; i++){
+       for(int i=0; i < nDLCDevs; i++)
+           employees.append(new DLCDev(daysPerDLC, this));
+       
+       for(int i=0; i < nIntegrators; i++)
            employees.append(new Integrator(this));
-       }
        
        int n = employees.size();
        for(int i=0; i < n; i++){

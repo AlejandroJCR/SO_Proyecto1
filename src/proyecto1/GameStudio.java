@@ -1,7 +1,7 @@
 package proyecto1;
 
 public class GameStudio extends Thread {
-    String name;
+    int id;
     Drive drive;
     LinkedList<Employee> employees;
     Configuration config;
@@ -15,8 +15,8 @@ public class GameStudio extends Thread {
     boolean isRunning;
     boolean PMWatchingStreams;
             
-    public GameStudio(String name, int carnetNumber, Specifications specs, Configuration config) {
-        this.name = name;
+    public GameStudio(int id, int carnetNumber, Specifications specs, Configuration config) {
+        this.id = id;
         this.drive = new Drive(specs);
         this.employees = new LinkedList<>();
         this.config = config;

@@ -17,6 +17,7 @@ public class Director extends Employee{
                 //Work 1 day to deliver games to the store
                 Thread.sleep(secondsPerDay*1000);
                 studio.deliverGames();
+                studio.changeDeadline("reset");
             } else {
                 int randomHour = (int)Math.floor(Math.random() * 24);
                 int restOfHours = 24 - randomHour;

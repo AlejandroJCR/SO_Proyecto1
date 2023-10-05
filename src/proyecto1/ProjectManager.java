@@ -11,7 +11,7 @@ public class ProjectManager extends Employee{
     @Override
     public void doWork() {
         int secondsPerDay = 3;
-        double milisecondsPerHalfHour = secondsPerDay * 1000 /48;
+        double milisecondsPerHalfHour = Math.ceil(secondsPerDay * 1000 /48);
        
         try {
             if(hoursWorked < 16){

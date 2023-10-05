@@ -6,7 +6,7 @@ public class GameStudio extends Thread {
     LinkedList<Employee> employees;
     Configuration config;
     
-    int daysForNarrative, daysForLevel, spritesPerDay, sistemsPerDay, daysPerDLC;
+    int daysForNarrative, daysForLevel, spritesPerDay, systemsPerDay, daysPerDLC;
     int rawProfits, operativeCosts, utility;
     int pmFaults;
     
@@ -38,10 +38,10 @@ public class GameStudio extends Thread {
         
         // Set sistemsPerDay and daysPerDLC
         if(carnetNumber >= 0 && carnetNumber < 5){
-            sistemsPerDay = 3;
+            systemsPerDay = 3;
             daysPerDLC = 3;
         }else if (carnetNumber >= 5 && carnetNumber < 6){
-            sistemsPerDay = 5;  
+            systemsPerDay = 5;  
             daysPerDLC = 2;
         }
        
@@ -66,7 +66,8 @@ public class GameStudio extends Thread {
     
     public void changeDeadline(String action){
         if(action.equals("reduce")){
-            currentDaysUntilDeadline--;
+            if(currentDaysUntilDeadline > 0)
+                currentDaysUntilDeadline--;
         } else if(action.equals("reset")) {
             currentDaysUntilDeadline = config.daysUntilDeadlineInit;
         }
@@ -88,6 +89,12 @@ public class GameStudio extends Thread {
        for(int i=0; i < config.nLevelDevs; i++)
            employees.append(new LevelDev(daysForLevel, this));
        
+       for(int i=0; i < config.nSpriteDevs; i++)
+           employees.append(new SpriteDev(spritesPerDay, this));
+       
+       for(int i=0; i < config.nSistemDevs; i++)
+           employees.append(new SystemDev(systemsPerDay, this));
+       
        for(int i=0; i < config.nDLCDevs; i++)
            employees.append(new DLCDev(daysPerDLC, this));
        
@@ -105,7 +112,7 @@ public class GameStudio extends Thread {
        }
        
        try {
-            Thread.sleep(3 * 1000 * 15);
+            Thread.sleep(3 * 1000 * 24);
             isRunning = false;
             
             for(int i=0; i < n; i++){

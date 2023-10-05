@@ -16,9 +16,9 @@ public class NarrativeDev extends Employee {
         try {
             // Sleep while producing a narrative
             Thread.sleep(secondsPerDay * 1000 * this.daysPerNarrative);
+            drive.addNarratives();
         } catch(InterruptedException e){
              // this part is executed when an exception (in this example InterruptedException) occurs
         }
-        drive.writeNarrative();
     }
 }

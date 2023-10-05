@@ -11,6 +11,8 @@ public class GameStudio extends Thread {
     int daysForNarrative, daysForLevel, spritesPerDay, sistemsPerDay, daysPerDLC;
     int rawProfits, operativeCosts, utility;
     
+    int daysUntilDeadlineInit, currentDaysUntilDeadline;
+    
     boolean isRunning;
             
     public GameStudio(String name, int carnetNumber, Specifications specs) {
@@ -51,6 +53,9 @@ public class GameStudio extends Thread {
         this.rawProfits = 0;
         this.operativeCosts = 0;
         this.utility = 0;
+        
+        daysUntilDeadlineInit = 7;
+        currentDaysUntilDeadline = 7;
     }
     
     public boolean simulationRunning(){
@@ -59,6 +64,15 @@ public class GameStudio extends Thread {
     
     public Drive getDrive(){
         return drive;
+    }
+    
+    public void changeDeadline(String action){
+        if(action.equals("reduce")){
+            currentDaysUntilDeadline--;
+        } else if(action.equals("reset")) {
+            currentDaysUntilDeadline = daysUntilDeadlineInit;
+        }
+        System.out.println("Deadline " + currentDaysUntilDeadline);
     }
     
     @Override
@@ -77,6 +91,8 @@ public class GameStudio extends Thread {
        for(int i=0; i < nIntegrators; i++)
            employees.append(new Integrator(this));
        
+       employees.append(new ProjectManager(this));
+       
        int n = employees.size();
        for(int i=0; i < n; i++){
            Employee e = employees.get(i);
@@ -84,7 +100,7 @@ public class GameStudio extends Thread {
        }
        
        try {
-            Thread.sleep(3 * 1000 * 12);
+            Thread.sleep(3 * 1000 * 15);
             isRunning = false;
             
             for(int i=0; i < n; i++){

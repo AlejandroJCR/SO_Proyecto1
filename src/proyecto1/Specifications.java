@@ -5,13 +5,12 @@ public class Specifications {
     int levels;
     int sprites;
     int sistems;
-    int gamesBeforeDlcs;
     int dlcs;
+    int gamesBeforeDlcs;
     int gameProfit;
     int gameWithDLCsProfit;
     
-    public Specifications(int narratives, int levels, int sprites, int sistems, int gamesBeforeDlcs,
-    int dlcs, int gameProfit, int gameWithDLCsProfit) {
+    public Specifications(int narratives, int levels, int sprites, int sistems, int dlcs, int gamesBeforeDlcs, int gameProfit, int gameWithDLCsProfit) {
         this.narratives = narratives;
         this.levels = levels;
         this.sprites = sprites;

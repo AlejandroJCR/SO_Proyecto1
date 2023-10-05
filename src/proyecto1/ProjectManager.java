@@ -16,13 +16,12 @@ public class ProjectManager extends Employee{
         try {
             if(hoursWorked < 16){
                 // Watching Stream
-                //System.out.println("PM is watching streams...");
+                studio.PMWatchingStreams = true;
                 Thread.sleep((long)milisecondsPerHalfHour);
                 // Working
-                //System.out.println("PM is working!");
+                studio.PMWatchingStreams = false;
                 Thread.sleep((long)milisecondsPerHalfHour);
                 hoursWorked++;
-                //System.out.println(hoursWorked);
             } else {
                 // Work for 8 hours
                 Thread.sleep((long)(milisecondsPerHalfHour * 16));

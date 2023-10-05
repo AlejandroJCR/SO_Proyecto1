@@ -133,4 +133,21 @@ public class Drive {
             System.out.println("InterruptedException caught");
         }     
     }
+    
+    public int getGames(){
+        int localGames = 0, localGamesWithDLC = 0;
+        
+        try{
+            semDrive.acquire();
+            localGames = games;
+            localGamesWithDLC = gamesWithDLC;
+            games = 0;
+            gamesWithDLC = 0;        
+            semDrive.release();
+        } catch (InterruptedException e) {
+            System.out.println("InterruptedException caught");
+        }  
+        
+        return localGames * specs.gameProfit + localGamesWithDLC * specs.gameWithDLCsProfit;
+    }
 }

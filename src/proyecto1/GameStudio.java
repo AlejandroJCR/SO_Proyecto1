@@ -1,28 +1,25 @@
 package proyecto1;
 
 public class GameStudio extends Thread {
-    String name;
-    
+    int id;
     Drive drive;
     LinkedList<Employee> employees;
+    Configuration config;
     
-    int employeesMax;
-    int nNarrativeDevs, nLevelDevs, nIntegrators, nDLCDevs;
-    int daysForNarrative, daysForLevel, spritesPerDay, sistemsPerDay, daysPerDLC;
+    int daysForNarrative, daysForLevel, spritesPerDay, systemsPerDay, daysPerDLC;
     int rawProfits, operativeCosts, utility;
+    int pmFaults;
+    
+    int currentDaysUntilDeadline;
     
     boolean isRunning;
+    boolean PMWatchingStreams;
             
-    public GameStudio(String name, int carnetNumber, Specifications specs) {
-        this.name = name;
+    public GameStudio(int id, int carnetNumber, Specifications specs, Configuration config) {
+        this.id = id;
         this.drive = new Drive(specs);
-        
         this.employees = new LinkedList<>();
-        this.employeesMax = carnetNumber + 10;
-        this.nNarrativeDevs = 2;
-        this.nLevelDevs = 3;
-        this.nIntegrators = 2;
-        this.nDLCDevs = 1;
+        this.config = config;
         
         // Set daysForNarrative, daysPerLevel and spritesPerDay
         if(carnetNumber >= 0 && carnetNumber < 3){
@@ -41,16 +38,18 @@ public class GameStudio extends Thread {
         
         // Set sistemsPerDay and daysPerDLC
         if(carnetNumber >= 0 && carnetNumber < 5){
-            sistemsPerDay = 3;
+            systemsPerDay = 3;
             daysPerDLC = 3;
         }else if (carnetNumber >= 5 && carnetNumber < 6){
-            sistemsPerDay = 5;  
+            systemsPerDay = 5;  
             daysPerDLC = 2;
         }
        
-        this.rawProfits = 0;
-        this.operativeCosts = 0;
-        this.utility = 0;
+        rawProfits = 0;
+        operativeCosts = 0;
+        utility = 0;
+        
+        currentDaysUntilDeadline = config.daysUntilDeadlineInit;
     }
     
     public boolean simulationRunning(){
@@ -61,21 +60,50 @@ public class GameStudio extends Thread {
         return drive;
     }
     
+    public boolean deadlineZero(){
+         return currentDaysUntilDeadline == 0;
+    }
+    
+    public void changeDeadline(String action){
+        if(action.equals("reduce")){
+            if(currentDaysUntilDeadline > 0)
+                currentDaysUntilDeadline--;
+        } else if(action.equals("reset")) {
+            currentDaysUntilDeadline = config.daysUntilDeadlineInit;
+        }
+        System.out.println("Deadline " + currentDaysUntilDeadline);
+    }
+    
+    public void deliverGames(){
+        rawProfits += drive.getGames();
+        System.out.println("PROFITS ! " + rawProfits);
+    }
+        
     @Override
     public void run() {
        isRunning = true;
        
-       for(int i=0; i < nNarrativeDevs; i++)
+       for(int i=0; i < config.nNarrativeDevs; i++)
            employees.append(new NarrativeDev(daysForNarrative, this));
        
-       for(int i=0; i < nLevelDevs; i++)
+       for(int i=0; i < config.nLevelDevs; i++)
            employees.append(new LevelDev(daysForLevel, this));
        
-       for(int i=0; i < nDLCDevs; i++)
+       for(int i=0; i < config.nSpriteDevs; i++)
+           employees.append(new SpriteDev(spritesPerDay, this));
+       
+       for(int i=0; i < config.nSistemDevs; i++)
+           employees.append(new SystemDev(systemsPerDay, this));
+       
+       for(int i=0; i < config.nDLCDevs; i++)
            employees.append(new DLCDev(daysPerDLC, this));
        
-       for(int i=0; i < nIntegrators; i++)
+       for(int i=0; i < config.nIntegrators; i++)
            employees.append(new Integrator(this));
+       
+       employees.append(new ProjectManager(this));
+       
+       employees.append(new Director(this));
        
        int n = employees.size();
        for(int i=0; i < n; i++){
@@ -84,7 +112,7 @@ public class GameStudio extends Thread {
        }
        
        try {
-            Thread.sleep(3 * 1000 * 12);
+            Thread.sleep(3 * 1000 * 24);
             isRunning = false;
             
             for(int i=0; i < n; i++){

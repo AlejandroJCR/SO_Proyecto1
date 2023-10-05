@@ -1,24 +1,24 @@
 package proyecto1;
 
-public class LevelDev extends Employee {
+public class SystemDev extends Employee {
     Drive drive;
-    int daysPerLevel;
+    int systemsPerDay;
     
-    public LevelDev(int daysPerLevel, GameStudio studio) {
-        super(10, studio);
+    public SystemDev(int systemsPerDay, GameStudio studio) {
+        super(20, studio);
         this.drive = studio.getDrive();
-        this.daysPerLevel = daysPerLevel;
+        this.systemsPerDay = systemsPerDay;
     }
 
     @Override
     public void doWork() {
-        int secondsPerDay = 3;
+        int secondsPerDay = 3;      
         try {
             // Sleep while producing a narrative
-            Thread.sleep(secondsPerDay * 1000 * this.daysPerLevel);
-            drive.addLevels();
+            Thread.sleep(secondsPerDay * 1000);
+            drive.addSystems(systemsPerDay);
         } catch(InterruptedException e){
              // this part is executed when an exception (in this example InterruptedException) occurs
-        }
+        }  
     }
 }

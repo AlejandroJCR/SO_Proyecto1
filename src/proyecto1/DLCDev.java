@@ -17,10 +17,10 @@ public class DLCDev extends Thread {
             while (!Thread.currentThread().isInterrupted()) {
                 // Sleep while producing a narrative
                 Thread.sleep(secondsPerDay * 1000 * this.daysPerDLC);
+                drive.addDLCs();
             }
         } catch(InterruptedException e){
             System.out.println("KILLED !!");
         }
-        drive.addDLCs();
     }
 }

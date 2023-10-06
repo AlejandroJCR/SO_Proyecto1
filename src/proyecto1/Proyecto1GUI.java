@@ -6,6 +6,17 @@ import java.util.Scanner;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+import org.jfree.chart.ChartFrame;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.chart.plot.XYPlot;
+import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
+import org.jfree.data.xy.XYSeries;
+import org.jfree.data.xy.XYSeriesCollection;
+import java.awt.BasicStroke;
+import java.awt.Color;
+
 public class Proyecto1GUI extends javax.swing.JFrame {
     Configuration config1, config2;
     Specifications specsStudio1, specsStudio2;
@@ -27,8 +38,8 @@ public class Proyecto1GUI extends javax.swing.JFrame {
         specsStudio1 = new Specifications(1, 2, 6, 5, 1, 3, 400000, 750000);
         specsStudio2 = new Specifications(2, 3, 4, 6, 5, 6, 450000, 900000);
         
-        studio1 = new GameStudio(1, 2, specsStudio1, config1, this);
-        studio2 = new GameStudio(2, 5, specsStudio2, config2, this);
+        studio1 = new GameStudio(1, "Capcom", 2, specsStudio1, config1, this);
+        studio2 = new GameStudio(2, "Bethesda", 5, specsStudio2, config2, this);
         
         max1.setText("Máximo de Empleados: " + Integer.toString(config1.maxEmployees));
         max2.setText("Máximo de Empleados: " + Integer.toString(config2.maxEmployees));
@@ -304,6 +315,7 @@ public class Proyecto1GUI extends javax.swing.JFrame {
         pmMoneyLoss2 = new javax.swing.JLabel();
         start = new javax.swing.JToggleButton();
         jButton7 = new javax.swing.JButton();
+        jToggleButton1 = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -1119,6 +1131,13 @@ public class Proyecto1GUI extends javax.swing.JFrame {
             }
         });
 
+        jToggleButton1.setText("Ver Utilidades");
+        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -1133,26 +1152,25 @@ public class Proyecto1GUI extends javax.swing.JFrame {
                             .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(149, 149, 149)
-                        .addComponent(jLabel15))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(117, 117, 117)
-                        .addComponent(jButton7)))
+                        .addComponent(jLabel15)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(drive4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(drive4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(106, 106, 106)
-                                .addComponent(jLabel49)))
-                        .addGap(123, 123, 123))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(91, 91, 91)
-                        .addComponent(start)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(106, 106, 106)
+                        .addComponent(jLabel49)))
+                .addGap(123, 123, 123))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(117, 117, 117)
+                .addComponent(jButton7)
+                .addGap(40, 40, 40)
+                .addComponent(start)
+                .addGap(54, 54, 54)
+                .addComponent(jToggleButton1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1178,7 +1196,8 @@ public class Proyecto1GUI extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(start)
-                    .addComponent(jButton7))
+                    .addComponent(jButton7)
+                    .addComponent(jToggleButton1))
                 .addContainerGap(37, Short.MAX_VALUE))
         );
 
@@ -1360,6 +1379,39 @@ public class Proyecto1GUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton7ActionPerformed
 
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+    
+        var dataset = new XYSeriesCollection();
+        dataset.addSeries(studio1.series);
+        dataset.addSeries(studio2.series);
+        
+        JFreeChart chart = ChartFactory.createXYLineChart(
+                "Utilidades de los estudios",
+                "Tiempo",
+                "Utilidades($)",
+                dataset,
+                PlotOrientation.VERTICAL,
+                true,
+                true,
+                false
+        );
+        
+        XYPlot plot = chart.getXYPlot();
+        var renderer = new XYLineAndShapeRenderer();
+        renderer.setSeriesPaint(0, Color.RED);
+        renderer.setSeriesStroke(0, new BasicStroke(2.0f));
+
+        renderer.setSeriesPaint(1, Color.BLUE);
+        renderer.setSeriesStroke(1, new BasicStroke(2.0f)); 
+        
+        plot.setRangeGridlinesVisible(false);
+        plot.setDomainGridlinesVisible(false);
+        
+        ChartFrame frame = new ChartFrame("Gráfica Actual", chart);
+        frame.pack();
+        frame.setVisible(true);
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -1480,6 +1532,7 @@ public class Proyecto1GUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JLabel levelDevCounter;
     private javax.swing.JLabel levelDevCounter2;
     private javax.swing.JLabel levels;

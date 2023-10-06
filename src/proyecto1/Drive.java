@@ -14,8 +14,7 @@ public class Drive {
     Semaphore semCurrentSprites = new Semaphore(0);
     Semaphore semCurrentSistems = new Semaphore(0);
     Semaphore semCurrentDLCs = new Semaphore(0);
-    
-    
+
     Semaphore semMaxNarratives = new Semaphore(25);
     Semaphore semMaxLevels = new Semaphore(20);
     Semaphore semMaxSprites = new Semaphore(55);
@@ -23,7 +22,6 @@ public class Drive {
     Semaphore semMaxDLCs = new Semaphore(10);
      
     int narratives, levels, sprites, systems, dlcs;
-    
     int games, gamesWithDLC, currentGamesBeforeDLC;
 
     public Drive(int id, Specifications specs, Proyecto1GUI GUI) {

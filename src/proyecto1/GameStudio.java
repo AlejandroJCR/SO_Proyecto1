@@ -3,7 +3,16 @@ package proyecto1;
 public class GameStudio extends Thread {
     int id;
     Drive drive;
-    LinkedList<Employee> employees;
+    
+    LinkedList<NarrativeDev> narrativesDevs = new LinkedList<>();;
+    LinkedList<LevelDev> levelsDevs = new LinkedList<>();;
+    LinkedList<SpriteDev> spritesDevs = new LinkedList<>();;
+    LinkedList<SystemDev> systemsDevs = new LinkedList<>();;
+    LinkedList<DLCDev> dlcDevs = new LinkedList<>();;
+    LinkedList<Integrator> integrators = new LinkedList<>();
+    ProjectManager PM;
+    Director director;
+    
     Configuration config;
     Proyecto1GUI GUI;
     
@@ -19,7 +28,6 @@ public class GameStudio extends Thread {
     public GameStudio(int id, int carnetNumber, Specifications specs, Configuration config, Proyecto1GUI GUI) {
         this.id = id;
         this.drive = new Drive(id, specs, GUI);
-        this.employees = new LinkedList<>();
         this.config = config;
         this.GUI = GUI;
         
@@ -102,39 +110,184 @@ public class GameStudio extends Thread {
     public void changeDirectorActivity(String activity){
         GUI.modDirectorActivity(id,activity);
     }
-        
+    
+    public void addNarrativeDev(){
+        if(isRunning && config.currentEmployees + 1 <= config.maxEmployees){
+            NarrativeDev newDev = new NarrativeDev(daysForNarrative, this);
+            narrativesDevs.append(newDev);
+            newDev.start();
+            config.nNarrativeDevs++;
+            config.currentEmployees++;
+            GUI.modNarrativesDev(id, config.nNarrativeDevs);
+        }
+    }
+    
+    public void removeNarrativeDev(){
+        if(isRunning && config.nNarrativeDevs != 1){
+            NarrativeDev dev = narrativesDevs.pop();
+            System.out.println(dev);
+            dev.interrupt(); 
+            config.nNarrativeDevs--;
+            config.currentEmployees--;
+            GUI.modNarrativesDev(id, config.nNarrativeDevs);
+        }
+    }
+    
+    public void addLevelDev(){
+        if(isRunning && config.currentEmployees + 1 <= config.maxEmployees){
+            LevelDev newDev = new LevelDev(daysForLevel, this);
+            levelsDevs.append(newDev);
+            newDev.start();
+            config.nLevelDevs++;
+            config.currentEmployees++;
+            GUI.modLevelDev(id, config.nLevelDevs);
+        }
+    }
+    
+    public void removeLevelDev(){
+        if(isRunning && config.nLevelDevs != 1){
+            LevelDev dev = levelsDevs.pop();
+            dev.interrupt();            
+            config.nLevelDevs--;
+            config.currentEmployees--;
+            GUI.modLevelDev(id, config.nLevelDevs);
+        }
+    }
+    
+    
+    public void addSpritesDev(){
+        if(isRunning && config.currentEmployees + 1 <= config.maxEmployees){
+            SpriteDev newDev = new SpriteDev(spritesPerDay, this);
+            spritesDevs.append(newDev);
+            newDev.start();
+            config.nSpriteDevs++;
+            config.currentEmployees++;
+            GUI.modSpritesDev(id, config.nSpriteDevs);
+        }
+    }
+    
+    public void removeSpritesDev(){
+        if(isRunning && config.nSpriteDevs != 1){
+            SpriteDev dev = spritesDevs.pop();
+            dev.interrupt();
+            config.nSpriteDevs--;
+            config.currentEmployees--;
+            GUI.modSpritesDev(id, config.nSpriteDevs);
+        }
+    }
+    
+    public void addSystemDev(){
+        if(isRunning && config.currentEmployees + 1 <= config.maxEmployees){
+            SystemDev newDev = new SystemDev(systemsPerDay, this);
+            systemsDevs.append(newDev);
+            newDev.start();
+            config.nSistemDevs++;
+            config.currentEmployees++;
+            GUI.modSystemDev(id, config.nSistemDevs);
+        }
+    }
+    
+    public void removeSystemDev(){
+        if(isRunning && config.nSistemDevs != 1){
+            SystemDev dev = systemsDevs.pop();
+            dev.interrupt();
+            config.nSistemDevs--;
+            config.currentEmployees--;
+            GUI.modSystemDev(id, config.nSistemDevs);
+        }
+    }
+    
+    public void addDLCDev(){
+        if(isRunning && config.currentEmployees + 1 <= config.maxEmployees){
+            DLCDev newDev = new DLCDev(daysPerDLC, this);
+            dlcDevs.append(newDev);
+            newDev.start();
+            config.nDLCDevs++;
+            config.currentEmployees++;
+            GUI.modDLCDev(id, config.nDLCDevs);
+        }
+    }
+    
+    public void removeDLCDev(){
+        if(isRunning && config.nDLCDevs != 1){
+            DLCDev dev = dlcDevs.pop();
+            dev.interrupt();
+            config.nDLCDevs--;
+            config.currentEmployees--;
+            GUI.modDLCDev(id, config.nDLCDevs);
+        }
+    }
+    
+    public void addIntegrator(){
+        System.out.println(config.currentEmployees);
+        if(isRunning && config.currentEmployees + 1 <= config.maxEmployees){
+            Integrator newIntegrator = new Integrator(this);
+            integrators.append(newIntegrator);
+            newIntegrator.start();
+            config.nIntegrators++;
+            config.currentEmployees++;
+            GUI.modIntegrators(id, config.nIntegrators);
+        }
+    }
+    
+    public void removeIntegrator(){
+        if(isRunning && config.nIntegrators != 1){
+            Integrator integrator = integrators.pop();
+            integrator.interrupt();
+            config.nIntegrators--;
+            config.currentEmployees--;
+            GUI.modIntegrators(id, config.nIntegrators);
+        }
+    }
+    
     @Override
     public void run() {
        isRunning = true;
        
        for(int i=0; i < config.nNarrativeDevs; i++)
-           employees.append(new NarrativeDev(daysForNarrative, this));
+           narrativesDevs.append(new NarrativeDev(daysForNarrative, this));
        
        for(int i=0; i < config.nLevelDevs; i++)
-           employees.append(new LevelDev(daysForLevel, this));
+           levelsDevs.append(new LevelDev(daysForLevel, this));
        
        for(int i=0; i < config.nSpriteDevs; i++)
-           employees.append(new SpriteDev(spritesPerDay, this));
+           spritesDevs.append(new SpriteDev(spritesPerDay, this));
        
        for(int i=0; i < config.nSistemDevs; i++)
-           employees.append(new SystemDev(systemsPerDay, this));
+           systemsDevs.append(new SystemDev(systemsPerDay, this));
        
        for(int i=0; i < config.nDLCDevs; i++)
-           employees.append(new DLCDev(daysPerDLC, this));
+           dlcDevs.append(new DLCDev(daysPerDLC, this));
        
        for(int i=0; i < config.nIntegrators; i++)
-           employees.append(new Integrator(this));
+           integrators.append(new Integrator(this));
        
-       employees.append(new ProjectManager(this));
+       PM = new ProjectManager(this);
+       director = new Director(this);
        
-       employees.append(new Director(this));
+       for(int i=0; i < config.nNarrativeDevs; i++)
+           narrativesDevs.get(i).start();
        
-       int n = employees.size();
-       for(int i=0; i < n; i++){
-           Employee e = employees.get(i);
-           e.start();
-       }
+       for(int i=0; i < config.nLevelDevs; i++)
+           levelsDevs.get(i).start();
        
+       for(int i=0; i < config.nSpriteDevs; i++)
+           spritesDevs.get(i).start();
+       
+       for(int i=0; i < config.nSistemDevs; i++)
+           systemsDevs.get(i).start();
+       
+       for(int i=0; i < config.nDLCDevs; i++)
+           dlcDevs.get(i).start();
+       
+       for(int i=0; i < config.nIntegrators; i++)
+           integrators.get(i).start();
+     
+        PM.start();
+        director.start();
+        
+        GUI.initEmployeesPanel();
+                
        /*try {
             Thread.sleep(3 * 1000 * 24);
             isRunning = false;

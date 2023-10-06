@@ -12,8 +12,8 @@ public class Proyecto1GUI extends javax.swing.JFrame {
     }
     
     private void initStudios(){
-        config1 = new Configuration(1, 7, 3, 2, 3, 3, 3, 3, 2);
-        config2 = new Configuration(1, 7, 3, 2, 3, 3, 3, 2, 5);
+        config1 = new Configuration(3, 7, 2, 2, 1, 3, 1, 1, 2);
+        config2 = new Configuration(3, 7, 3, 2, 1, 3, 3, 2, 5);
         
         specsStudio1 = new Specifications(1, 2, 6, 5, 1, 3, 400000, 750000);
         specsStudio2 = new Specifications(2, 3, 4, 6, 5, 6, 450000, 900000);
@@ -21,11 +21,23 @@ public class Proyecto1GUI extends javax.swing.JFrame {
         studio1 = new GameStudio(1, 2, specsStudio1, config1, this);
         studio2 = new GameStudio(2, 5, specsStudio2, config2, this);
         
-        narrativesDevCounter.setText("1");
-        narrativesDevCounter.setText("1");
-        
         max1.setText("Máximo de Empleados: " + Integer.toString(config1.maxEmployees));
         max2.setText("Máximo de Empleados: " + Integer.toString(config2.maxEmployees));
+    }
+    
+    public void initEmployeesPanel(){ 
+        narrativesDevCounter.setText(Integer.toString(studio1.config.nNarrativeDevs));
+        narrativesDevCounter2.setText(Integer.toString(studio2.config.nNarrativeDevs));
+        levelDevCounter.setText(Integer.toString(studio1.config.nLevelDevs));
+        levelDevCounter2.setText(Integer.toString(studio2.config.nLevelDevs));
+        spritesDevCounter.setText(Integer.toString(studio1.config.nSpriteDevs));
+        spritesDevCounter2.setText(Integer.toString(studio2.config.nSpriteDevs));
+        logicDevCounter.setText(Integer.toString(studio1.config.nSistemDevs));
+        logicDevCounter2.setText(Integer.toString(studio2.config.nSistemDevs));
+        dlcDevCounter.setText(Integer.toString(studio1.config.nDLCDevs));
+        dlcDevCounter2.setText(Integer.toString(studio2.config.nDLCDevs));
+        integratorsCounter.setText(Integer.toString(studio1.config.nIntegrators));
+        integratorsCounter2.setText(Integer.toString(studio2.config.nIntegrators));
     }
     
     public void modNarrativeAmount(int id, int amount){
@@ -38,7 +50,7 @@ public class Proyecto1GUI extends javax.swing.JFrame {
     
     public void modLevelsAmount(int id, int amount){
         if(id == 1){
-            levels.setText(Integer.toString(amount) + "/20");
+            levels.setText(Integer.toString(amount) + "/21");
         }else {
             levels2.setText(Integer.toString(amount)+ "/20");
         }
@@ -118,6 +130,53 @@ public class Proyecto1GUI extends javax.swing.JFrame {
         }
     }
     
+    public void modNarrativesDev(int id, int narrativeDevs){
+        if(id == 1){
+            narrativesDevCounter.setText(Integer.toString(narrativeDevs));
+        }else {
+            narrativesDevCounter2.setText(Integer.toString(narrativeDevs));
+        }
+    }
+    
+    public void modLevelDev(int id, int levelsDevs){
+        if(id == 1){
+            levelDevCounter.setText(Integer.toString(levelsDevs));
+        }else {
+            levelDevCounter2.setText(Integer.toString(levelsDevs));
+        }
+    }
+    
+    public void modSpritesDev(int id, int amount){
+        if(id == 1){
+            spritesDevCounter.setText(Integer.toString(amount));
+        }else {
+            spritesDevCounter2.setText(Integer.toString(amount));
+        }
+    }
+    
+    public void modSystemDev(int id, int amount){
+        if(id == 1){
+            logicDevCounter.setText(Integer.toString(amount));
+        }else {
+            logicDevCounter2.setText(Integer.toString(amount));
+        }
+    }
+    
+    public void modDLCDev(int id, int amount){
+        if(id == 1){
+            dlcDevCounter.setText(Integer.toString(amount));
+        }else {
+            dlcDevCounter2.setText(Integer.toString(amount));
+        }
+    }
+    
+    public void modIntegrators(int id, int amount){
+        if(id == 1){
+            integratorsCounter.setText(Integer.toString(amount));
+        }else {
+            integratorsCounter2.setText(Integer.toString(amount));
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -234,6 +293,7 @@ public class Proyecto1GUI extends javax.swing.JFrame {
         pmFaltas2 = new javax.swing.JLabel();
         pmMoneyLoss2 = new javax.swing.JLabel();
         start = new javax.swing.JToggleButton();
+        jButton7 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -262,14 +322,14 @@ public class Proyecto1GUI extends javax.swing.JFrame {
             }
         });
 
-        narrativesDevCounter.setText("/");
+        narrativesDevCounter.setText("0");
 
         max1.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
         max1.setText("Maximo de Empleados: ");
 
         jLabel63.setText("Diseñadores de Niveles");
 
-        levelDevCounter.setText("/");
+        levelDevCounter.setText("0");
 
         jButton3.setText("-");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -292,7 +352,7 @@ public class Proyecto1GUI extends javax.swing.JFrame {
             }
         });
 
-        spritesDevCounter.setText("/");
+        spritesDevCounter.setText("0");
 
         jButton6.setText("-");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -303,7 +363,7 @@ public class Proyecto1GUI extends javax.swing.JFrame {
 
         jLabel64.setText("Artistas de Sprites");
 
-        logicDevCounter.setText("/");
+        logicDevCounter.setText("0");
 
         jButton9.setText("-");
         jButton9.addActionListener(new java.awt.event.ActionListener() {
@@ -321,7 +381,7 @@ public class Proyecto1GUI extends javax.swing.JFrame {
             }
         });
 
-        dlcDevCounter.setText("/");
+        dlcDevCounter.setText("0");
 
         jButton11.setText("-");
         jButton11.addActionListener(new java.awt.event.ActionListener() {
@@ -348,7 +408,7 @@ public class Proyecto1GUI extends javax.swing.JFrame {
             }
         });
 
-        integratorsCounter.setText("/");
+        integratorsCounter.setText("0");
 
         jButton36.setText("+");
         jButton36.addActionListener(new java.awt.event.ActionListener() {
@@ -662,14 +722,14 @@ public class Proyecto1GUI extends javax.swing.JFrame {
             }
         });
 
-        narrativesDevCounter2.setText("/");
+        narrativesDevCounter2.setText("0");
 
         max2.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
         max2.setText("Maximo de Empleados: ");
 
         jLabel87.setText("Diseñadores de Niveles");
 
-        levelDevCounter2.setText("/");
+        levelDevCounter2.setText("0");
 
         jButton27.setText("-");
         jButton27.addActionListener(new java.awt.event.ActionListener() {
@@ -692,7 +752,7 @@ public class Proyecto1GUI extends javax.swing.JFrame {
             }
         });
 
-        spritesDevCounter2.setText("/");
+        spritesDevCounter2.setText("0");
 
         jButton30.setText("-");
         jButton30.addActionListener(new java.awt.event.ActionListener() {
@@ -703,7 +763,7 @@ public class Proyecto1GUI extends javax.swing.JFrame {
 
         jLabel88.setText("Artistas de Sprites");
 
-        logicDevCounter2.setText("/");
+        logicDevCounter2.setText("0");
 
         jButton33.setText("-");
         jButton33.addActionListener(new java.awt.event.ActionListener() {
@@ -721,7 +781,7 @@ public class Proyecto1GUI extends javax.swing.JFrame {
             }
         });
 
-        dlcDevCounter2.setText("/");
+        dlcDevCounter2.setText("0");
 
         jButton39.setText("-");
         jButton39.addActionListener(new java.awt.event.ActionListener() {
@@ -748,7 +808,7 @@ public class Proyecto1GUI extends javax.swing.JFrame {
             }
         });
 
-        integratorsCounter2.setText("/");
+        integratorsCounter2.setText("0");
 
         jButton42.setText("+");
         jButton42.addActionListener(new java.awt.event.ActionListener() {
@@ -1042,6 +1102,13 @@ public class Proyecto1GUI extends javax.swing.JFrame {
             }
         });
 
+        jButton7.setText("Cargar Datos");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -1056,21 +1123,26 @@ public class Proyecto1GUI extends javax.swing.JFrame {
                             .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(149, 149, 149)
-                        .addComponent(jLabel15)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(drive4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jLabel15))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(106, 106, 106)
-                        .addComponent(jLabel49)))
-                .addGap(123, 123, 123))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(273, 273, 273)
-                .addComponent(start)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(117, 117, 117)
+                        .addComponent(jButton7)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(drive4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(106, 106, 106)
+                                .addComponent(jLabel49)))
+                        .addGap(123, 123, 123))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(91, 91, 91)
+                        .addComponent(start)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1094,7 +1166,9 @@ public class Proyecto1GUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addComponent(start)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(start)
+                    .addComponent(jButton7))
                 .addContainerGap(37, Short.MAX_VALUE))
         );
 
@@ -1111,108 +1185,107 @@ public class Proyecto1GUI extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 704, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 686, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        studio1.addNarrativeDev();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        studio1.removeNarrativeDev();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        studio1.removeLevelDev();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+        studio1.addLevelDev();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
+        studio1.addSpritesDev();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
+        studio1.removeSpritesDev();
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        // TODO add your handling code here:
+        studio1.removeSystemDev();
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        // TODO add your handling code here:
+        studio1.addSystemDev();
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        // TODO add your handling code here:
+        studio1.removeDLCDev();
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-        // TODO add your handling code here:
+        studio1.addDLCDev();
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void jButton35ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton35ActionPerformed
-        // TODO add your handling code here:
+        studio1.removeIntegrator();
     }//GEN-LAST:event_jButton35ActionPerformed
 
     private void jButton36ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton36ActionPerformed
-        // TODO add your handling code here:
+        studio1.addIntegrator();
     }//GEN-LAST:event_jButton36ActionPerformed
 
     private void jButton25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton25ActionPerformed
-        // TODO add your handling code here:
+        studio2.addNarrativeDev();
     }//GEN-LAST:event_jButton25ActionPerformed
 
     private void jButton26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton26ActionPerformed
-        // TODO add your handling code here:
+        studio2.removeNarrativeDev();
     }//GEN-LAST:event_jButton26ActionPerformed
 
     private void jButton27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton27ActionPerformed
-        // TODO add your handling code here:
+        studio2.removeLevelDev();
     }//GEN-LAST:event_jButton27ActionPerformed
 
     private void jButton28ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton28ActionPerformed
-        // TODO add your handling code here:
+       studio2.addLevelDev();
     }//GEN-LAST:event_jButton28ActionPerformed
 
     private void jButton29ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton29ActionPerformed
-        // TODO add your handling code here:
+       studio2.addSpritesDev();
     }//GEN-LAST:event_jButton29ActionPerformed
 
     private void jButton30ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton30ActionPerformed
-        // TODO add your handling code here:
+        studio2.removeSpritesDev();
     }//GEN-LAST:event_jButton30ActionPerformed
 
     private void jButton33ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton33ActionPerformed
-        // TODO add your handling code here:
+        studio2.removeSystemDev();
     }//GEN-LAST:event_jButton33ActionPerformed
 
     private void jButton34ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton34ActionPerformed
-        // TODO add your handling code here:
+        studio2.addSystemDev();
     }//GEN-LAST:event_jButton34ActionPerformed
 
     private void jButton39ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton39ActionPerformed
-        // TODO add your handling code here:
+        studio2.removeDLCDev();
     }//GEN-LAST:event_jButton39ActionPerformed
 
     private void jButton40ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton40ActionPerformed
-        // TODO add your handling code here:
+        studio2.addDLCDev();
     }//GEN-LAST:event_jButton40ActionPerformed
 
     private void jButton41ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton41ActionPerformed
-        // TODO add your handling code here:
+        studio2.removeIntegrator();
     }//GEN-LAST:event_jButton41ActionPerformed
 
     private void jButton42ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton42ActionPerformed
-        // TODO add your handling code here:
+        studio2.addIntegrator();
     }//GEN-LAST:event_jButton42ActionPerformed
 
     private void startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startActionPerformed
@@ -1221,6 +1294,10 @@ public class Proyecto1GUI extends javax.swing.JFrame {
         studio2.start();
         start.setEnabled(false);
     }//GEN-LAST:event_startActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton7ActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -1297,6 +1374,7 @@ public class Proyecto1GUI extends javax.swing.JFrame {
     private javax.swing.JButton jButton42;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

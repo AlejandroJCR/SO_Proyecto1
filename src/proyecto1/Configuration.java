@@ -10,6 +10,7 @@ public class Configuration {
     int nDLCDevs;
     int nIntegrators;
     int maxEmployees;
+    int currentEmployees;
     
     public Configuration(int secondsPerDay, int daysUntilDeadlineInit, int nNarrativeDevs, int nLevelDevs, int nSpriteDevs,
         int nSistemDevs, int nDLCDevs, int nIntegrators, int carnetNumber){
@@ -22,5 +23,7 @@ public class Configuration {
         this.nDLCDevs = nDLCDevs;
         this.nIntegrators = nIntegrators;
         this.maxEmployees = carnetNumber + 10;
+        this.currentEmployees =  nNarrativeDevs + nLevelDevs + nSpriteDevs + nSistemDevs + nDLCDevs + nIntegrators;
+        System.out.println(this.currentEmployees);
     }
 }

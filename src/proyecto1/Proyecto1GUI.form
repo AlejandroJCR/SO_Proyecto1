@@ -69,7 +69,7 @@
                               <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace type="unrelated" pref="23" max="32767" attributes="0"/>
+                      <EmptySpace type="unrelated" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                               <Component id="drive4" max="32767" attributes="0"/>
@@ -81,11 +81,11 @@
                               <Component id="jLabel49" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="123" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="273" max="-2" attributes="0"/>
-                      <Component id="jToggleButton1" min="-2" max="-2" attributes="0"/>
+                      <Component id="start" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -115,7 +115,7 @@
                           </Group>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jToggleButton1" min="-2" max="-2" attributes="0"/>
+                      <Component id="start" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="37" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -467,7 +467,7 @@
                                               <Component id="sprites" min="-2" max="-2" attributes="0"/>
                                               <Component id="dlcs" alignment="0" min="-2" max="-2" attributes="0"/>
                                           </Group>
-                                          <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="jLabel25" min="-2" max="-2" attributes="0"/>
                                               <Component id="jLabel27" min="-2" max="-2" attributes="0"/>
@@ -492,8 +492,8 @@
                           </Group>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
-                                  <Component id="nivels" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                                  <Component id="levels" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -516,7 +516,7 @@
                               <Component id="jLabel20" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="narratives" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel25" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="nivels" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="levels" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -564,7 +564,7 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="narratives">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="/"/>
+                    <Property name="text" type="java.lang.String" value="0/25"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel22">
@@ -574,12 +574,12 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="sprites">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="/"/>
+                    <Property name="text" type="java.lang.String" value="0/55"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="nivels">
+                <Component class="javax.swing.JLabel" name="levels">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="/"/>
+                    <Property name="text" type="java.lang.String" value="0/20"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel25">
@@ -589,7 +589,7 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="systems">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="/"/>
+                    <Property name="text" type="java.lang.String" value="0/35"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel27">
@@ -599,7 +599,7 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="dlcs">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="/"/>
+                    <Property name="text" type="java.lang.String" value="0/10"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel29">
@@ -619,12 +619,12 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="games">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="/"/>
+                    <Property name="text" type="java.lang.String" value="0"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="gamesDLCs">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="/"/>
+                    <Property name="text" type="java.lang.String" value="0"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel8">
@@ -652,11 +652,11 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel77" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel76" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel78" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel79" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel80" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="pmActvity" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="deadline" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="director" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="pmMoneyLoss" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="pmFaltas" alignment="0" min="-2" pref="161" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
@@ -673,15 +673,15 @@
                           <EmptySpace min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel75" min="-2" pref="16" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel76" min="-2" max="-2" attributes="0"/>
+                          <Component id="deadline" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel77" min="-2" max="-2" attributes="0"/>
+                          <Component id="pmActvity" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel78" min="-2" max="-2" attributes="0"/>
+                          <Component id="director" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel79" min="-2" max="-2" attributes="0"/>
+                          <Component id="pmFaltas" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel80" min="-2" max="-2" attributes="0"/>
+                          <Component id="pmMoneyLoss" min="-2" max="-2" attributes="0"/>
                           <EmptySpace pref="19" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -696,29 +696,29 @@
                     <Property name="text" type="java.lang.String" value="Status"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel76">
+                <Component class="javax.swing.JLabel" name="deadline">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Dias para la entrega: "/>
+                    <Property name="text" type="java.lang.String" value="Dias para la entrega: 0 "/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel77">
+                <Component class="javax.swing.JLabel" name="pmActvity">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="El Project Manager est&#xe1;: "/>
+                    <Property name="text" type="java.lang.String" value="El Project Manager est&#xe1;: - "/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel78">
+                <Component class="javax.swing.JLabel" name="director">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="El Director est&#xe1;: "/>
+                    <Property name="text" type="java.lang.String" value="El Director est&#xe1;: -"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel79">
+                <Component class="javax.swing.JLabel" name="pmFaltas">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Cantidad de faltas del PM: "/>
+                    <Property name="text" type="java.lang.String" value="Cantidad de faltas del PM: 0"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel80">
+                <Component class="javax.swing.JLabel" name="pmMoneyLoss">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Dinero descontado al PM: "/>
+                    <Property name="text" type="java.lang.String" value="Dinero descontado al PM: 0"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -1084,7 +1084,7 @@
                                               <Component id="sprites2" alignment="0" min="-2" max="-2" attributes="0"/>
                                               <Component id="dlcs2" alignment="0" min="-2" max="-2" attributes="0"/>
                                           </Group>
-                                          <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="jLabel57" alignment="0" min="-2" max="-2" attributes="0"/>
                                               <Component id="jLabel59" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -1109,8 +1109,8 @@
                           </Group>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
-                                  <Component id="nivels2" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                                  <Component id="levels2" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -1133,7 +1133,7 @@
                               <Component id="jLabel52" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="narratives2" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel57" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="nivels2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="levels2" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -1181,7 +1181,7 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="narratives2">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="/"/>
+                    <Property name="text" type="java.lang.String" value="0/25"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel54">
@@ -1191,12 +1191,12 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="sprites2">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="/"/>
+                    <Property name="text" type="java.lang.String" value="0/55"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="nivels2">
+                <Component class="javax.swing.JLabel" name="levels2">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="/"/>
+                    <Property name="text" type="java.lang.String" value="0/20"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel57">
@@ -1206,7 +1206,7 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="systems2">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="/"/>
+                    <Property name="text" type="java.lang.String" value="0/35"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel59">
@@ -1216,7 +1216,7 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="dlcs2">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="/"/>
+                    <Property name="text" type="java.lang.String" value="0/10"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel61">
@@ -1236,12 +1236,12 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="games2">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="/"/>
+                    <Property name="text" type="java.lang.String" value="0"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="gamesDLCs2">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="/"/>
+                    <Property name="text" type="java.lang.String" value="0"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel10">
@@ -1269,11 +1269,11 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel98" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel97" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel99" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel100" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel101" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="pmActvity2" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="deadline2" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="director2" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="pmMoneyLoss2" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="pmFaltas2" alignment="0" min="-2" pref="161" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
@@ -1290,15 +1290,15 @@
                           <EmptySpace min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel96" min="-2" pref="16" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel97" min="-2" max="-2" attributes="0"/>
+                          <Component id="deadline2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel98" min="-2" max="-2" attributes="0"/>
+                          <Component id="pmActvity2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel99" min="-2" max="-2" attributes="0"/>
+                          <Component id="director2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel100" min="-2" max="-2" attributes="0"/>
+                          <Component id="pmFaltas2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel101" min="-2" max="-2" attributes="0"/>
+                          <Component id="pmMoneyLoss2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace pref="19" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -1313,39 +1313,39 @@
                     <Property name="text" type="java.lang.String" value="Status"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel97">
+                <Component class="javax.swing.JLabel" name="deadline2">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Dias para la entrega: "/>
+                    <Property name="text" type="java.lang.String" value="Dias para la entrega: 0"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel98">
+                <Component class="javax.swing.JLabel" name="pmActvity2">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="El Project Manager est&#xe1;: "/>
+                    <Property name="text" type="java.lang.String" value="El Project Manager est&#xe1;: -"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel99">
+                <Component class="javax.swing.JLabel" name="director2">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="El Director est&#xe1;: "/>
+                    <Property name="text" type="java.lang.String" value="El Director est&#xe1;: -"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel100">
+                <Component class="javax.swing.JLabel" name="pmFaltas2">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Cantidad de faltas del PM: "/>
+                    <Property name="text" type="java.lang.String" value="Cantidad de faltas del PM: 0"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel101">
+                <Component class="javax.swing.JLabel" name="pmMoneyLoss2">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Dinero descontado al PM: "/>
+                    <Property name="text" type="java.lang.String" value="Dinero descontado al PM: 0"/>
                   </Properties>
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JToggleButton" name="jToggleButton1">
+            <Component class="javax.swing.JToggleButton" name="start">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Comenzar Simulacion"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jToggleButton1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="startActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>

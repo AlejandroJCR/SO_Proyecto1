@@ -3,16 +3,16 @@ package proyecto1;
 public class Integrator extends Employee{
     Drive drive;
     int daysPerNarrative;
+    int secondsPerDay;
     
     public Integrator(GameStudio studio) {
         super(25, studio);
         this.drive = studio.getDrive();
+        this.secondsPerDay = studio.config.secondsPerDay;
     }
 
     @Override
     public void doWork() {
-        int secondsPerDay = 3;
-        
         drive.getResources();
         System.out.println("Integration started");
         

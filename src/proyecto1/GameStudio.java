@@ -5,9 +5,10 @@ public class GameStudio extends Thread {
     Drive drive;
     LinkedList<Employee> employees;
     Configuration config;
+    Proyecto1GUI GUI;
     
     int daysForNarrative, daysForLevel, spritesPerDay, systemsPerDay, daysPerDLC;
-    int rawProfits, operativeCosts, utility;
+    int rawProfits, operativeCosts, utility, deductedFromPM;
     int pmFaults;
     
     int currentDaysUntilDeadline;
@@ -15,11 +16,12 @@ public class GameStudio extends Thread {
     boolean isRunning;
     boolean PMWatchingStreams;
             
-    public GameStudio(int id, int carnetNumber, Specifications specs, Configuration config) {
+    public GameStudio(int id, int carnetNumber, Specifications specs, Configuration config, Proyecto1GUI GUI) {
         this.id = id;
-        this.drive = new Drive(specs);
+        this.drive = new Drive(id, specs, GUI);
         this.employees = new LinkedList<>();
         this.config = config;
+        this.GUI = GUI;
         
         // Set daysForNarrative, daysPerLevel and spritesPerDay
         if(carnetNumber >= 0 && carnetNumber < 3){
@@ -72,11 +74,33 @@ public class GameStudio extends Thread {
             currentDaysUntilDeadline = config.daysUntilDeadlineInit;
         }
         System.out.println("Deadline " + currentDaysUntilDeadline);
+        GUI.modDeadline(id, currentDaysUntilDeadline);
+    }
+    
+    public void changePMActvity(boolean isWatchingStreams){
+        PMWatchingStreams = isWatchingStreams;
+        if(isWatchingStreams){
+            GUI.modPmActivity(id, "viendo streams");
+        } else{
+            GUI.modPmActivity(id, "trabajando");
+        }
+    }
+    
+    public void caughtPM(){
+        pmFaults++;
+        deductedFromPM += 50;
+        operativeCosts -= 50;
+        
+        GUI.modPmFaults(id, pmFaults, deductedFromPM);
     }
     
     public void deliverGames(){
         rawProfits += drive.getGames();
         System.out.println("PROFITS ! " + rawProfits);
+    }
+    
+    public void changeDirectorActivity(String activity){
+        GUI.modDirectorActivity(id,activity);
     }
         
     @Override
@@ -111,7 +135,7 @@ public class GameStudio extends Thread {
            e.start();
        }
        
-       try {
+       /*try {
             Thread.sleep(3 * 1000 * 24);
             isRunning = false;
             
@@ -123,6 +147,6 @@ public class GameStudio extends Thread {
             System.out.println("END OF SIMULATION");
         } catch(InterruptedException e){
              // this part is executed when an exception (in this example InterruptedException) occurs
-        }
+        }*/
     }
 }

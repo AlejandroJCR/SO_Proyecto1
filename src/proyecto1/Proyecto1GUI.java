@@ -12,14 +12,14 @@ public class Proyecto1GUI extends javax.swing.JFrame {
     }
     
     private void initStudios(){
-        config1 = new Configuration(3, 7, 1, 2, 3, 3, 3, 2, 2);
-        config2 = new Configuration(3, 7, 1, 2, 3, 3, 3, 2, 5);
+        config1 = new Configuration(1, 7, 3, 2, 3, 3, 3, 3, 2);
+        config2 = new Configuration(1, 7, 3, 2, 3, 3, 3, 2, 5);
         
         specsStudio1 = new Specifications(1, 2, 6, 5, 1, 3, 400000, 750000);
         specsStudio2 = new Specifications(2, 3, 4, 6, 5, 6, 450000, 900000);
         
-        studio1 = new GameStudio(1, 2, specsStudio1, config1);
-        studio2 = new GameStudio(2, 5, specsStudio2, config2);
+        studio1 = new GameStudio(1, 2, specsStudio1, config1, this);
+        studio2 = new GameStudio(2, 5, specsStudio2, config2, this);
         
         narrativesDevCounter.setText("1");
         narrativesDevCounter.setText("1");
@@ -28,7 +28,96 @@ public class Proyecto1GUI extends javax.swing.JFrame {
         max2.setText("Máximo de Empleados: " + Integer.toString(config2.maxEmployees));
     }
     
-
+    public void modNarrativeAmount(int id, int amount){
+        if(id == 1){
+            narratives.setText(Integer.toString(amount) + "/25");
+        }else {
+            narratives2.setText(Integer.toString(amount)+ "/25");
+        }
+    }
+    
+    public void modLevelsAmount(int id, int amount){
+        if(id == 1){
+            levels.setText(Integer.toString(amount) + "/20");
+        }else {
+            levels2.setText(Integer.toString(amount)+ "/20");
+        }
+    }
+    
+    public void modSpritesAmount(int id, int amount){
+        if(id == 1){
+            sprites.setText(Integer.toString(amount) + "/55");
+        }else {
+            sprites2.setText(Integer.toString(amount)+ "/55");
+        }
+    }
+    
+    public void modSystemsAmount(int id, int amount){
+        if(id == 1){
+            systems.setText(Integer.toString(amount) + "/35");
+        }else {
+            systems2.setText(Integer.toString(amount)+ "/35");
+        }
+    }
+    
+    public void modDLCAmount(int id, int amount){
+        if(id == 1){
+            dlcs.setText(Integer.toString(amount) + "/10");
+        }else {
+            dlcs2.setText(Integer.toString(amount)+ "/10");
+        }
+    }
+    
+    public void modGamesAmount(int id, int amount){
+        if(id == 1){
+            games.setText(Integer.toString(amount));
+        }else {
+            games2.setText(Integer.toString(amount));
+        }
+    }
+    
+    public void modGamesDLCAmount(int id, int amount){
+        if(id == 1){
+            gamesDLCs.setText(Integer.toString(amount));
+        }else {
+            gamesDLCs2.setText(Integer.toString(amount));
+        }
+    }
+    
+    public void modDeadline(int id, int amount){
+        if(id == 1){
+            deadline.setText("Dias para la entrega: " + Integer.toString(amount));
+        }else {
+            deadline2.setText("Dias para la entrega: " + Integer.toString(amount));
+        }
+    }
+    
+    public void modPmActivity(int id, String activity){
+        if(id == 1){
+            pmActvity.setText("El Project Manager está: " + activity);
+        }else {
+            pmActvity2.setText("El Project Manager está: " + activity);
+        }
+    }
+    
+    public void modPmFaults(int id, int amount, int moneyDeducted){
+        if(id == 1){
+            pmFaltas.setText("Cantidad de faltas del PM: " + amount);
+            pmMoneyLoss.setText("Dinero descontado al PM: " + moneyDeducted);
+        }else {
+            pmFaltas2.setText("Cantidad de faltas del PM: " + amount);
+            pmMoneyLoss2.setText("Dinero descontado al PM: " + moneyDeducted);
+        }
+    }
+    
+    public void modDirectorActivity(int id, String activtity){
+        if(id == 1){
+            director.setText("El Director está: " + activtity);
+        }else {
+            director2.setText("El Director está: " + activtity);
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -73,7 +162,7 @@ public class Proyecto1GUI extends javax.swing.JFrame {
         narratives = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         sprites = new javax.swing.JLabel();
-        nivels = new javax.swing.JLabel();
+        levels = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
         systems = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
@@ -86,11 +175,11 @@ public class Proyecto1GUI extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         jLabel75 = new javax.swing.JLabel();
-        jLabel76 = new javax.swing.JLabel();
-        jLabel77 = new javax.swing.JLabel();
-        jLabel78 = new javax.swing.JLabel();
-        jLabel79 = new javax.swing.JLabel();
-        jLabel80 = new javax.swing.JLabel();
+        deadline = new javax.swing.JLabel();
+        pmActvity = new javax.swing.JLabel();
+        director = new javax.swing.JLabel();
+        pmFaltas = new javax.swing.JLabel();
+        pmMoneyLoss = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel49 = new javax.swing.JLabel();
         drive4 = new javax.swing.JPanel();
@@ -126,7 +215,7 @@ public class Proyecto1GUI extends javax.swing.JFrame {
         narratives2 = new javax.swing.JLabel();
         jLabel54 = new javax.swing.JLabel();
         sprites2 = new javax.swing.JLabel();
-        nivels2 = new javax.swing.JLabel();
+        levels2 = new javax.swing.JLabel();
         jLabel57 = new javax.swing.JLabel();
         systems2 = new javax.swing.JLabel();
         jLabel59 = new javax.swing.JLabel();
@@ -139,12 +228,12 @@ public class Proyecto1GUI extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
         jLabel96 = new javax.swing.JLabel();
-        jLabel97 = new javax.swing.JLabel();
-        jLabel98 = new javax.swing.JLabel();
-        jLabel99 = new javax.swing.JLabel();
-        jLabel100 = new javax.swing.JLabel();
-        jLabel101 = new javax.swing.JLabel();
-        jToggleButton1 = new javax.swing.JToggleButton();
+        deadline2 = new javax.swing.JLabel();
+        pmActvity2 = new javax.swing.JLabel();
+        director2 = new javax.swing.JLabel();
+        pmFaltas2 = new javax.swing.JLabel();
+        pmMoneyLoss2 = new javax.swing.JLabel();
+        start = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -384,21 +473,21 @@ public class Proyecto1GUI extends javax.swing.JFrame {
 
         jLabel20.setText("Narrativas: ");
 
-        narratives.setText("/");
+        narratives.setText("0/25");
 
         jLabel22.setText("Sprites:");
 
-        sprites.setText("/");
+        sprites.setText("0/55");
 
-        nivels.setText("/");
+        levels.setText("0/20");
 
         jLabel25.setText("Niveles:");
 
-        systems.setText("/");
+        systems.setText("0/35");
 
         jLabel27.setText("Sistemas:");
 
-        dlcs.setText("/");
+        dlcs.setText("0/10");
 
         jLabel29.setText("DLCs:");
 
@@ -406,9 +495,9 @@ public class Proyecto1GUI extends javax.swing.JFrame {
 
         jLabel33.setText("Con DLC:");
 
-        games.setText("/");
+        games.setText("0");
 
-        gamesDLCs.setText("/");
+        gamesDLCs.setText("0");
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel8.setText("Juegos listos:");
@@ -436,7 +525,7 @@ public class Proyecto1GUI extends javax.swing.JFrame {
                                     .addComponent(narratives)
                                     .addComponent(sprites)
                                     .addComponent(dlcs))
-                                .addGap(58, 58, 58)
+                                .addGap(43, 43, 43)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel25)
                                     .addComponent(jLabel27))
@@ -453,8 +542,8 @@ public class Proyecto1GUI extends javax.swing.JFrame {
                         .addGap(144, 144, 144)))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(nivels)
-                        .addGap(40, 40, 40))
+                        .addComponent(levels)
+                        .addGap(19, 19, 19))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(systems)
@@ -471,7 +560,7 @@ public class Proyecto1GUI extends javax.swing.JFrame {
                     .addComponent(jLabel20)
                     .addComponent(narratives)
                     .addComponent(jLabel25)
-                    .addComponent(nivels))
+                    .addComponent(levels))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel22)
@@ -500,15 +589,15 @@ public class Proyecto1GUI extends javax.swing.JFrame {
         jLabel75.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel75.setText("Status");
 
-        jLabel76.setText("Dias para la entrega: ");
+        deadline.setText("Dias para la entrega: 0 ");
 
-        jLabel77.setText("El Project Manager está: ");
+        pmActvity.setText("El Project Manager está: - ");
 
-        jLabel78.setText("El Director está: ");
+        director.setText("El Director está: -");
 
-        jLabel79.setText("Cantidad de faltas del PM: ");
+        pmFaltas.setText("Cantidad de faltas del PM: 0");
 
-        jLabel80.setText("Dinero descontado al PM: ");
+        pmMoneyLoss.setText("Dinero descontado al PM: 0");
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -517,11 +606,11 @@ public class Proyecto1GUI extends javax.swing.JFrame {
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel77)
-                    .addComponent(jLabel76)
-                    .addComponent(jLabel78)
-                    .addComponent(jLabel79)
-                    .addComponent(jLabel80))
+                    .addComponent(pmActvity)
+                    .addComponent(deadline)
+                    .addComponent(director)
+                    .addComponent(pmMoneyLoss)
+                    .addComponent(pmFaltas, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -534,15 +623,15 @@ public class Proyecto1GUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel75, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel76)
+                .addComponent(deadline)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel77)
+                .addComponent(pmActvity)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel78)
+                .addComponent(director)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel79)
+                .addComponent(pmFaltas)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel80)
+                .addComponent(pmMoneyLoss)
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
@@ -784,21 +873,21 @@ public class Proyecto1GUI extends javax.swing.JFrame {
 
         jLabel52.setText("Narrativas: ");
 
-        narratives2.setText("/");
+        narratives2.setText("0/25");
 
         jLabel54.setText("Sprites:");
 
-        sprites2.setText("/");
+        sprites2.setText("0/55");
 
-        nivels2.setText("/");
+        levels2.setText("0/20");
 
         jLabel57.setText("Niveles:");
 
-        systems2.setText("/");
+        systems2.setText("0/35");
 
         jLabel59.setText("Sistemas:");
 
-        dlcs2.setText("/");
+        dlcs2.setText("0/10");
 
         jLabel61.setText("DLCs:");
 
@@ -806,9 +895,9 @@ public class Proyecto1GUI extends javax.swing.JFrame {
 
         jLabel93.setText("Con DLC:");
 
-        games2.setText("/");
+        games2.setText("0");
 
-        gamesDLCs2.setText("/");
+        gamesDLCs2.setText("0");
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel10.setText("Juegos listos:");
@@ -836,7 +925,7 @@ public class Proyecto1GUI extends javax.swing.JFrame {
                                     .addComponent(narratives2)
                                     .addComponent(sprites2)
                                     .addComponent(dlcs2))
-                                .addGap(58, 58, 58)
+                                .addGap(40, 40, 40)
                                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel57)
                                     .addComponent(jLabel59))
@@ -853,8 +942,8 @@ public class Proyecto1GUI extends javax.swing.JFrame {
                         .addGap(144, 144, 144)))
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addComponent(nivels2)
-                        .addGap(40, 40, 40))
+                        .addComponent(levels2)
+                        .addGap(34, 34, 34))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(systems2)
@@ -871,7 +960,7 @@ public class Proyecto1GUI extends javax.swing.JFrame {
                     .addComponent(jLabel52)
                     .addComponent(narratives2)
                     .addComponent(jLabel57)
-                    .addComponent(nivels2))
+                    .addComponent(levels2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel54)
@@ -900,15 +989,15 @@ public class Proyecto1GUI extends javax.swing.JFrame {
         jLabel96.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel96.setText("Status");
 
-        jLabel97.setText("Dias para la entrega: ");
+        deadline2.setText("Dias para la entrega: 0");
 
-        jLabel98.setText("El Project Manager está: ");
+        pmActvity2.setText("El Project Manager está: -");
 
-        jLabel99.setText("El Director está: ");
+        director2.setText("El Director está: -");
 
-        jLabel100.setText("Cantidad de faltas del PM: ");
+        pmFaltas2.setText("Cantidad de faltas del PM: 0");
 
-        jLabel101.setText("Dinero descontado al PM: ");
+        pmMoneyLoss2.setText("Dinero descontado al PM: 0");
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -917,11 +1006,11 @@ public class Proyecto1GUI extends javax.swing.JFrame {
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel98)
-                    .addComponent(jLabel97)
-                    .addComponent(jLabel99)
-                    .addComponent(jLabel100)
-                    .addComponent(jLabel101))
+                    .addComponent(pmActvity2)
+                    .addComponent(deadline2)
+                    .addComponent(director2)
+                    .addComponent(pmMoneyLoss2)
+                    .addComponent(pmFaltas2, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -934,22 +1023,22 @@ public class Proyecto1GUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel96, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel97)
+                .addComponent(deadline2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel98)
+                .addComponent(pmActvity2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel99)
+                .addComponent(director2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel100)
+                .addComponent(pmFaltas2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel101)
+                .addComponent(pmMoneyLoss2)
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
-        jToggleButton1.setText("Comenzar Simulacion");
-        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+        start.setText("Comenzar Simulacion");
+        start.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton1ActionPerformed(evt);
+                startActionPerformed(evt);
             }
         });
 
@@ -968,7 +1057,7 @@ public class Proyecto1GUI extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(149, 149, 149)
                         .addComponent(jLabel15)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 23, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(drive4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -977,10 +1066,10 @@ public class Proyecto1GUI extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(106, 106, 106)
                         .addComponent(jLabel49)))
-                .addGap(93, 93, 93))
+                .addGap(123, 123, 123))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(273, 273, 273)
-                .addComponent(jToggleButton1)
+                .addComponent(start)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -1005,7 +1094,7 @@ public class Proyecto1GUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addComponent(jToggleButton1)
+                .addComponent(start)
                 .addContainerGap(37, Short.MAX_VALUE))
         );
 
@@ -1126,10 +1215,12 @@ public class Proyecto1GUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton42ActionPerformed
 
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+    private void startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startActionPerformed
         // Start simulation
         studio1.start();
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
+        studio2.start();
+        start.setEnabled(false);
+    }//GEN-LAST:event_startActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -1167,6 +1258,10 @@ public class Proyecto1GUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel deadline;
+    private javax.swing.JLabel deadline2;
+    private javax.swing.JLabel director;
+    private javax.swing.JLabel director2;
     private javax.swing.JLabel dlcDevCounter;
     private javax.swing.JLabel dlcDevCounter2;
     private javax.swing.JLabel dlcs;
@@ -1205,8 +1300,6 @@ public class Proyecto1GUI extends javax.swing.JFrame {
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel100;
-    private javax.swing.JLabel jLabel101;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
@@ -1233,12 +1326,7 @@ public class Proyecto1GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel67;
     private javax.swing.JLabel jLabel68;
     private javax.swing.JLabel jLabel75;
-    private javax.swing.JLabel jLabel76;
-    private javax.swing.JLabel jLabel77;
-    private javax.swing.JLabel jLabel78;
-    private javax.swing.JLabel jLabel79;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel80;
     private javax.swing.JLabel jLabel87;
     private javax.swing.JLabel jLabel88;
     private javax.swing.JLabel jLabel90;
@@ -1246,18 +1334,16 @@ public class Proyecto1GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel92;
     private javax.swing.JLabel jLabel93;
     private javax.swing.JLabel jLabel96;
-    private javax.swing.JLabel jLabel97;
-    private javax.swing.JLabel jLabel98;
-    private javax.swing.JLabel jLabel99;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JLabel levelDevCounter;
     private javax.swing.JLabel levelDevCounter2;
+    private javax.swing.JLabel levels;
+    private javax.swing.JLabel levels2;
     private javax.swing.JLabel logicDevCounter;
     private javax.swing.JLabel logicDevCounter2;
     private javax.swing.JLabel max1;
@@ -1266,12 +1352,17 @@ public class Proyecto1GUI extends javax.swing.JFrame {
     private javax.swing.JLabel narratives2;
     private javax.swing.JLabel narrativesDevCounter;
     private javax.swing.JLabel narrativesDevCounter2;
-    private javax.swing.JLabel nivels;
-    private javax.swing.JLabel nivels2;
+    private javax.swing.JLabel pmActvity;
+    private javax.swing.JLabel pmActvity2;
+    private javax.swing.JLabel pmFaltas;
+    private javax.swing.JLabel pmFaltas2;
+    private javax.swing.JLabel pmMoneyLoss;
+    private javax.swing.JLabel pmMoneyLoss2;
     private javax.swing.JLabel sprites;
     private javax.swing.JLabel sprites2;
     private javax.swing.JLabel spritesDevCounter;
     private javax.swing.JLabel spritesDevCounter2;
+    private javax.swing.JToggleButton start;
     private javax.swing.JLabel systems;
     private javax.swing.JLabel systems2;
     // End of variables declaration//GEN-END:variables

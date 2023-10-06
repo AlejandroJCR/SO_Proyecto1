@@ -3,29 +3,33 @@ package proyecto1;
 import java.util.concurrent.Semaphore;
 
 public class Drive {
+    int id;
     Specifications specs;
+    Proyecto1GUI GUI;
     
-    static Semaphore semDrive = new Semaphore(1);
+    Semaphore semDrive = new Semaphore(1);
     
-    static Semaphore semCurrentNarratives = new Semaphore(0);
-    static Semaphore semCurrentLevels = new Semaphore(0);
-    static Semaphore semCurrentSprites = new Semaphore(0);
-    static Semaphore semCurrentSistems = new Semaphore(0);
-    static Semaphore semCurrentDLCs = new Semaphore(0);
+    Semaphore semCurrentNarratives = new Semaphore(0);
+    Semaphore semCurrentLevels = new Semaphore(0);
+    Semaphore semCurrentSprites = new Semaphore(0);
+    Semaphore semCurrentSistems = new Semaphore(0);
+    Semaphore semCurrentDLCs = new Semaphore(0);
     
     
-    static Semaphore semMaxNarratives = new Semaphore(25);
-    static Semaphore semMaxLevels = new Semaphore(20);
-    static Semaphore semMaxSprites = new Semaphore(55);
-    static Semaphore semMaxSistems = new Semaphore(35);
-    static Semaphore semMaxDLCs = new Semaphore(10);
+    Semaphore semMaxNarratives = new Semaphore(25);
+    Semaphore semMaxLevels = new Semaphore(20);
+    Semaphore semMaxSprites = new Semaphore(55);
+    Semaphore semMaxSistems = new Semaphore(35);
+    Semaphore semMaxDLCs = new Semaphore(10);
      
     int narratives, levels, sprites, systems, dlcs;
     
     int games, gamesWithDLC, currentGamesBeforeDLC;
 
-    public Drive(Specifications specs) {
+    public Drive(int id, Specifications specs, Proyecto1GUI GUI) {
+        this.id = id;
         this.specs = specs;
+        this.GUI = GUI;
         this.narratives = 0;
         this.levels = 0;
         this.sprites = 0;
@@ -42,7 +46,8 @@ public class Drive {
             semMaxNarratives.acquire();
             semDrive.acquire();
             narratives++;
-            System.out.println("Producer produced narrative : " + narratives + " " + levels);
+            System.out.println(id + " Producer produced narrative : " + narratives + " " + levels);
+            GUI.modNarrativeAmount(id, narratives);
             semDrive.release();
             semCurrentNarratives.release();
         }
@@ -56,7 +61,8 @@ public class Drive {
             semMaxLevels.acquire();
             semDrive.acquire();
             levels++;
-            System.out.println("Producer produced level : " + narratives + " " + levels);
+            System.out.println(id + " Producer produced level : " + narratives + " " + levels);
+            GUI.modLevelsAmount(id, levels);
             semDrive.release();
             semCurrentLevels.release();
         }
@@ -67,14 +73,13 @@ public class Drive {
     
     public void addSprites(int spritesPerDay){
         try {
-            for(int i=0; i < spritesPerDay; i++)
-                semMaxSprites.acquire();
+            semMaxSprites.acquire(spritesPerDay);
             semDrive.acquire();
             sprites += spritesPerDay;
-            System.out.println("Producer produced sprites: " + sprites);
+            System.out.println(id + " Producer produced sprites: " + sprites);
+            GUI.modSpritesAmount(id, sprites);
             semDrive.release();
-            for(int i=0; i < spritesPerDay; i++)
-                semCurrentSprites.release();
+            semCurrentSprites.release(spritesPerDay);
         }
         catch (InterruptedException e) {
             System.out.println("InterruptedException caught");
@@ -83,14 +88,13 @@ public class Drive {
     
     public void addSystems(int systemsPerDay){
         try {
-            for(int i=0; i < systemsPerDay; i++)
-                semMaxSistems.acquire();
+            semMaxSistems.acquire(systemsPerDay);
             semDrive.acquire();
             systems += systemsPerDay;
-            System.out.println("Producer produced systems: " + systems);
+            System.out.println(id + " Producer produced systems: " + systems);
+            GUI.modSystemsAmount(id, systems);
             semDrive.release();
-            for(int i=0; i < systemsPerDay; i++)
-                semCurrentSistems.release();
+            semCurrentSistems.release(systemsPerDay);
         }
         catch (InterruptedException e) {
             System.out.println("InterruptedException caught");
@@ -102,7 +106,8 @@ public class Drive {
             semMaxDLCs.acquire();
             semDrive.acquire();
             dlcs++;
-            System.out.println("Producer produced DLC : " + dlcs);
+            System.out.println(id + " Producer produced DLC : " + dlcs);
+            GUI.modDLCAmount(id, dlcs);
             semDrive.release();
             semCurrentDLCs.release();
         }
@@ -113,31 +118,27 @@ public class Drive {
     
     public void getResources(){
         try {
-            for(int i=0; i < specs.narratives; i++)
-                semCurrentNarratives.acquire();
-            for(int i=0; i < specs.levels; i++)
-                semCurrentLevels.acquire();
-            for(int i=0; i < specs.sprites; i++)
-                semCurrentSprites.acquire();
-            for(int i=0; i < specs.systems; i++)
-                semCurrentSistems.acquire();
-            System.out.println("Recursos listos");
+            semCurrentNarratives.acquire(specs.narratives);
+            semCurrentLevels.acquire(specs.levels);
+            semCurrentSprites.acquire(specs.sprites);
+            semCurrentSistems.acquire(specs.systems);
+            System.out.println(id + " Recursos listos");
             semDrive.acquire();
             narratives -= specs.narratives;
             levels -= specs.levels;
             sprites -= specs.sprites;
             systems -= specs.systems;
-            System.out.println("Integrator is ready to make game: " + narratives + " " + levels + " " + sprites + " " + systems);
+            System.out.println(id + " Integrator is ready to make game: " + narratives + " " + levels + " " + sprites + " " + systems);
+            GUI.modNarrativeAmount(id, narratives);
+            GUI.modLevelsAmount(id, levels);
+            GUI.modSpritesAmount(id, sprites);
+            GUI.modSystemsAmount(id, systems);
             semDrive.release();
             
-            for(int i=0; i < specs.narratives; i++)
-                semMaxNarratives.release();
-            for(int i=0; i < specs.levels; i++)
-                semMaxLevels.release();  
-            for(int i=0; i < specs.sprites; i++)
-                semMaxSprites.release();   
-            for(int i=0; i < specs.systems; i++)
-                semMaxSistems.release();   
+            semMaxNarratives.release(specs.narratives);
+            semMaxLevels.release(specs.levels);  
+            semMaxSprites.release(specs.sprites);   
+            semMaxSistems.release(specs.systems);   
         }
         catch (InterruptedException e) {
             System.out.println("InterruptedException caught");
@@ -150,8 +151,7 @@ public class Drive {
            if(currentGamesBeforeDLC != 0 && currentGamesBeforeDLC % specs.gamesBeforeDlcs == 0){
                // Temporaly release the drive semaphore to wait for the dlcs
                semDrive.release();
-               for(int i=0; i < specs.dlcs; i++)
-                    semCurrentDLCs.acquire();
+               semCurrentDLCs.acquire(specs.dlcs);
                
                // Adquire the drive lock again before modifying the values
                semDrive.acquire();
@@ -159,14 +159,16 @@ public class Drive {
                dlcs -= specs.dlcs;
                currentGamesBeforeDLC = 0;
                
-               for(int i=0; i < specs.dlcs; i++)
-                semMaxDLCs.release();
+               semMaxDLCs.release(specs.dlcs);
                
-               System.out.println("Game with DLC ready! " + games + " " + gamesWithDLC);
+               System.out.println(id + " Game with DLC ready! " + games + " " + gamesWithDLC);
+               GUI.modGamesDLCAmount(id, gamesWithDLC);
+               GUI.modDLCAmount(id, dlcs);
            } else {
                games++;
                currentGamesBeforeDLC++;
-               System.out.println("Game ready! " + games + " " + gamesWithDLC);
+               System.out.println(id + " Game ready! " + games + " " + gamesWithDLC);
+               GUI.modGamesAmount(id, games);
            }
 
            semDrive.release();
@@ -185,6 +187,8 @@ public class Drive {
             localGamesWithDLC = gamesWithDLC;
             games = 0;
             gamesWithDLC = 0;        
+            GUI.modGamesAmount(id, 0);
+            GUI.modGamesDLCAmount(id, 0);
             semDrive.release();
         } catch (InterruptedException e) {
             System.out.println("InterruptedException caught");

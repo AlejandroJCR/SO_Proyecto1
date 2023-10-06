@@ -3,16 +3,17 @@ package proyecto1;
 public class DLCDev extends Employee {
     Drive drive;
     int daysPerDLC;
+    int secondsPerDay;
     
     public DLCDev(int daysPerDLC, GameStudio studio) {
         super(17, studio);
         this.drive = studio.getDrive();
         this.daysPerDLC = daysPerDLC;
+        this.secondsPerDay = studio.config.secondsPerDay;
     }
 
     @Override
     public void doWork() {
-        int secondsPerDay = 3;
         try {
             // Sleep while producing a narrative
             Thread.sleep(secondsPerDay * 1000 * this.daysPerDLC);

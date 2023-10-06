@@ -14,8 +14,7 @@ public class DirectorCheck extends Thread{
     public void run() {
         while (!isInterrupted() && !caughtPM) {
             if(studio.PMWatchingStreams){
-                studio.pmFaults++;
-                studio.operativeCosts -= 50;
+                studio.caughtPM();
                 caughtPM = true;
                 System.out.println("Caught PM!");
             }

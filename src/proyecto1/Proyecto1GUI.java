@@ -1,5 +1,11 @@
 package proyecto1;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
 public class Proyecto1GUI extends javax.swing.JFrame {
     Configuration config1, config2;
     Specifications specsStudio1, specsStudio2;
@@ -9,6 +15,9 @@ public class Proyecto1GUI extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.initStudios();
+        
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Texts Files","txt");
+        fileChooser.setFileFilter(filter);
     }
     
     private void initStudios(){
@@ -186,6 +195,7 @@ public class Proyecto1GUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        fileChooser = new javax.swing.JFileChooser();
         jScrollPane3 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
         drive2 = new javax.swing.JPanel();
@@ -1296,7 +1306,58 @@ public class Proyecto1GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_startActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // TODO add your handling code here:
+        if (fileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
+            try {
+                String filename = fileChooser.getSelectedFile().getAbsolutePath();
+                File myObj = new File(filename);
+                Scanner myReader = new Scanner(myObj);
+                
+                String line = myReader.nextLine();
+                int segsPerDay = Integer. parseInt(line.split(": ")[1]);
+                line = myReader.nextLine();
+                int deadline = Integer. parseInt(line.split(": ")[1]);
+                line = myReader.nextLine();
+                line = myReader.nextLine();
+                
+                int nNarrativeDevs = Integer. parseInt(line.split(": ")[1]);
+                line = myReader.nextLine();
+                int nLevelDevs = Integer. parseInt(line.split(": ")[1]);
+                line = myReader.nextLine();
+                int nSpriteDevs = Integer. parseInt(line.split(": ")[1]);
+                line = myReader.nextLine();
+                int nSystemsDevs = Integer. parseInt(line.split(": ")[1]);
+                line = myReader.nextLine();
+                int nDLCDevs = Integer. parseInt(line.split(": ")[1]);
+                line = myReader.nextLine();
+                int nIntegrators = Integer. parseInt(line.split(": ")[1]);
+                line = myReader.nextLine();
+                line = myReader.nextLine();
+                
+                int nNarrativeDevs2 = Integer. parseInt(line.split(": ")[1]);
+                line = myReader.nextLine();
+                int nLevelDevs2 = Integer. parseInt(line.split(": ")[1]);
+                line = myReader.nextLine();
+                int nSpriteDevs2 = Integer. parseInt(line.split(": ")[1]);
+                line = myReader.nextLine();
+                int nSystemsDevs2 = Integer. parseInt(line.split(": ")[1]);
+                line = myReader.nextLine();
+                int nDLCDevs2 = Integer. parseInt(line.split(": ")[1]);
+                line = myReader.nextLine();
+                int nIntegrators2 = Integer. parseInt(line.split(": ")[1]);
+                
+                config1 = new Configuration(segsPerDay, deadline, nNarrativeDevs, nLevelDevs, nSpriteDevs, nSystemsDevs, nDLCDevs, nIntegrators, 2);
+                config2 = new Configuration(segsPerDay, deadline, nNarrativeDevs2, nLevelDevs2, nSpriteDevs2, nSystemsDevs2, nDLCDevs2, nIntegrators2, 5);
+                
+                studio1.config = config1;
+                studio2.config = config2;
+                
+                initEmployeesPanel();
+        
+            } catch (FileNotFoundException e) {
+                System.out.println("An error occurred.");
+                e.printStackTrace();
+              }
+        }
     }//GEN-LAST:event_jButton7ActionPerformed
 
     public static void main(String args[]) {
@@ -1345,6 +1406,7 @@ public class Proyecto1GUI extends javax.swing.JFrame {
     private javax.swing.JLabel dlcs2;
     private javax.swing.JPanel drive2;
     private javax.swing.JPanel drive4;
+    private javax.swing.JFileChooser fileChooser;
     private javax.swing.JLabel games;
     private javax.swing.JLabel games2;
     private javax.swing.JLabel gamesDLCs;

@@ -1,16 +1,16 @@
-segsPerDay: 1
-deadline: 5
+segsPerDay: 2
+deadline: 15
 studio1:
-nNarrativeDevs: 1
-nLevelDevs: 2
+nNarrativeDevs: 3
+nLevelDevs: 3
 nSpriteDevs: 1
 nSystemDevs: 1
 nDLCDevs: 1
-nIntegrators: 1
+nIntegrators: 3
 studio2:
-nNarrativeDevs: 2
-nLevelDevs: 2
+nNarrativeDevs: 3
+nLevelDevs: 4
 nSpriteDevs: 1
 nSystemDevs: 1
-nDLCDevs: 1
-nIntegrators: 2
+nDLCDevs: 3
+nIntegrators: 3

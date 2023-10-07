@@ -44,7 +44,6 @@ public class Drive {
             semMaxNarratives.acquire();
             semDrive.acquire();
             narratives++;
-            System.out.println(id + " Producer produced narrative : " + narratives + " " + levels);
             GUI.modNarrativeAmount(id, narratives);
             semDrive.release();
             semCurrentNarratives.release();
@@ -59,7 +58,6 @@ public class Drive {
             semMaxLevels.acquire();
             semDrive.acquire();
             levels++;
-            System.out.println(id + " Producer produced level : " + narratives + " " + levels);
             GUI.modLevelsAmount(id, levels);
             semDrive.release();
             semCurrentLevels.release();
@@ -74,7 +72,6 @@ public class Drive {
             semMaxSprites.acquire(spritesPerDay);
             semDrive.acquire();
             sprites += spritesPerDay;
-            System.out.println(id + " Producer produced sprites: " + sprites);
             GUI.modSpritesAmount(id, sprites);
             semDrive.release();
             semCurrentSprites.release(spritesPerDay);
@@ -89,7 +86,6 @@ public class Drive {
             semMaxSistems.acquire(systemsPerDay);
             semDrive.acquire();
             systems += systemsPerDay;
-            System.out.println(id + " Producer produced systems: " + systems);
             GUI.modSystemsAmount(id, systems);
             semDrive.release();
             semCurrentSistems.release(systemsPerDay);
@@ -104,7 +100,6 @@ public class Drive {
             semMaxDLCs.acquire();
             semDrive.acquire();
             dlcs++;
-            System.out.println(id + " Producer produced DLC : " + dlcs);
             GUI.modDLCAmount(id, dlcs);
             semDrive.release();
             semCurrentDLCs.release();
@@ -120,13 +115,11 @@ public class Drive {
             semCurrentLevels.acquire(specs.levels);
             semCurrentSprites.acquire(specs.sprites);
             semCurrentSistems.acquire(specs.systems);
-            System.out.println(id + " Recursos listos");
             semDrive.acquire();
             narratives -= specs.narratives;
             levels -= specs.levels;
             sprites -= specs.sprites;
             systems -= specs.systems;
-            System.out.println(id + " Integrator is ready to make game: " + narratives + " " + levels + " " + sprites + " " + systems);
             GUI.modNarrativeAmount(id, narratives);
             GUI.modLevelsAmount(id, levels);
             GUI.modSpritesAmount(id, sprites);
@@ -159,13 +152,11 @@ public class Drive {
                
                semMaxDLCs.release(specs.dlcs);
                
-               System.out.println(id + " Game with DLC ready! " + games + " " + gamesWithDLC);
                GUI.modGamesDLCAmount(id, gamesWithDLC);
                GUI.modDLCAmount(id, dlcs);
            } else {
                games++;
                currentGamesBeforeDLC++;
-               System.out.println(id + " Game ready! " + games + " " + gamesWithDLC);
                GUI.modGamesAmount(id, games);
            }
 

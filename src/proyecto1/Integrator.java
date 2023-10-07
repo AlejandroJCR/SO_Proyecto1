@@ -20,7 +20,7 @@ public class Integrator extends Thread{
                 drive.addGame();
             }   
         } catch(InterruptedException e){
-            System.out.println("KILLED !!");
+            //Thread killed
         }   
     }
 }

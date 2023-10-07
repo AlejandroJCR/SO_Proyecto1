@@ -1,5 +1,7 @@
 package proyecto1;
 
+import org.jfree.data.xy.XYSeries;
+
 public class GameStudio extends Thread {
     int id;
     Drive drive;
@@ -19,13 +21,16 @@ public class GameStudio extends Thread {
     int daysForNarrative, daysForLevel, spritesPerDay, systemsPerDay, daysPerDLC;
     int rawProfits, operativeCosts, utility, deductedFromPM;
     int pmFaults;
+    int daysPassed = 0;
     
     int currentDaysUntilDeadline;
     
     boolean isRunning;
     boolean PMWatchingStreams;
+
+    XYSeries series;
             
-    public GameStudio(int id, int carnetNumber, Specifications specs, Configuration config, Proyecto1GUI GUI) {
+    public GameStudio(int id, String name, int carnetNumber, Specifications specs, Configuration config, Proyecto1GUI GUI) {
         this.id = id;
         this.drive = new Drive(id, specs, GUI);
         this.config = config;
@@ -50,7 +55,7 @@ public class GameStudio extends Thread {
         if(carnetNumber >= 0 && carnetNumber < 5){
             systemsPerDay = 3;
             daysPerDLC = 3;
-        }else if (carnetNumber >= 5 && carnetNumber < 6){
+        }else if (carnetNumber >= 5 && carnetNumber <= 9){
             systemsPerDay = 5;  
             daysPerDLC = 2;
         }
@@ -60,6 +65,9 @@ public class GameStudio extends Thread {
         utility = 0;
         
         currentDaysUntilDeadline = config.daysUntilDeadlineInit;
+        
+        series = new XYSeries(name);
+        series.add(0, 0);
     }
     
     public boolean simulationRunning(){
@@ -74,14 +82,25 @@ public class GameStudio extends Thread {
          return currentDaysUntilDeadline == 0;
     }
     
+    public int calculateDayCosts(){
+        return config.nNarrativeDevs*10*24 + config.nLevelDevs*13*24 + config.nSpriteDevs*20*24 
+                + config.nSistemDevs*8*24 + config.nDLCDevs*17*24 + config.nIntegrators*25*24 +
+                20*24 + 30*24;
+    }
+    
     public void changeDeadline(String action){
         if(action.equals("reduce")){
-            if(currentDaysUntilDeadline > 0)
+            if(currentDaysUntilDeadline > 0){
                 currentDaysUntilDeadline--;
+                daysPassed++;
+                operativeCosts =+ calculateDayCosts();
+                utility = rawProfits - operativeCosts;
+                GUI.modUtilities(id, utility);
+                series.add(daysPassed, utility);
+            }   
         } else if(action.equals("reset")) {
             currentDaysUntilDeadline = config.daysUntilDeadlineInit;
         }
-        System.out.println("Deadline " + currentDaysUntilDeadline);
         GUI.modDeadline(id, currentDaysUntilDeadline);
     }
     
@@ -98,13 +117,13 @@ public class GameStudio extends Thread {
         pmFaults++;
         deductedFromPM += 50;
         operativeCosts -= 50;
-        
+        GUI.modCosts(id, operativeCosts);
         GUI.modPmFaults(id, pmFaults, deductedFromPM);
     }
     
     public void deliverGames(){
         rawProfits += drive.getGames();
-        System.out.println("PROFITS ! " + rawProfits);
+        GUI.modProfits(id, rawProfits);
     }
     
     public void changeDirectorActivity(String activity){
@@ -125,7 +144,6 @@ public class GameStudio extends Thread {
     public void removeNarrativeDev(){
         if(isRunning && config.nNarrativeDevs != 1){
             NarrativeDev dev = narrativesDevs.pop();
-            System.out.println(dev);
             dev.interrupt(); 
             config.nNarrativeDevs--;
             config.currentEmployees--;
@@ -219,7 +237,6 @@ public class GameStudio extends Thread {
     }
     
     public void addIntegrator(){
-        System.out.println(config.currentEmployees);
         if(isRunning && config.currentEmployees + 1 <= config.maxEmployees){
             Integrator newIntegrator = new Integrator(this);
             integrators.append(newIntegrator);
@@ -287,19 +304,5 @@ public class GameStudio extends Thread {
         director.start();
         
         GUI.initEmployeesPanel();
-                
-       /*try {
-            Thread.sleep(3 * 1000 * 24);
-            isRunning = false;
-            
-            for(int i=0; i < n; i++){
-                Employee e = employees.get(i);
-                e.join();
-            }
-            
-            System.out.println("END OF SIMULATION");
-        } catch(InterruptedException e){
-             // this part is executed when an exception (in this example InterruptedException) occurs
-        }*/
     }
 }

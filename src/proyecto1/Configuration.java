@@ -24,6 +24,5 @@ public class Configuration {
         this.nIntegrators = nIntegrators;
         this.maxEmployees = carnetNumber + 10;
         this.currentEmployees =  nNarrativeDevs + nLevelDevs + nSpriteDevs + nSistemDevs + nDLCDevs + nIntegrators;
-        System.out.println(this.currentEmployees);
     }
 }

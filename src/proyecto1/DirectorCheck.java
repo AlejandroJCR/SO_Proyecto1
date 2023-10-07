@@ -1,7 +1,6 @@
 package proyecto1;
 
 public class DirectorCheck extends Thread{
-
     GameStudio studio;
     boolean caughtPM;
     
@@ -16,7 +15,6 @@ public class DirectorCheck extends Thread{
             if(studio.PMWatchingStreams){
                 studio.caughtPM();
                 caughtPM = true;
-                System.out.println("Caught PM!");
             }
         }
     }

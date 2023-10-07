@@ -31,8 +31,8 @@ public class Proyecto1GUI extends javax.swing.JFrame {
     }
     
     private void initStudios(){
-        config1 = new Configuration(3, 7, 1, 1, 1, 1, 1, 1, 2);
-        config2 = new Configuration(3, 7, 1, 1, 1, 1, 1, 1, 5);
+        config1 = new Configuration(3, 18, 1, 1, 1, 1, 1, 1, 2);
+        config2 = new Configuration(3, 18, 1, 1, 1, 1, 1, 1, 5);
         
         specsStudio1 = new Specifications(1, 2, 6, 5, 1, 3, 400000, 750000);
         specsStudio2 = new Specifications(2, 3, 4, 6, 5, 6, 450000, 900000);
@@ -1428,6 +1428,9 @@ public class Proyecto1GUI extends javax.swing.JFrame {
                 
                 studio1.config = config1;
                 studio2.config = config2;
+                
+                studio1.currentDaysUntilDeadline = deadline;
+                studio2.currentDaysUntilDeadline = deadline;
                 
                 initEmployeesPanel();
         

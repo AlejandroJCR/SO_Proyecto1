@@ -2,7 +2,6 @@ package proyecto1;
 
 public class Integrator extends Thread{
     Drive drive;
-    int daysPerNarrative;
     int secondsPerDay;
     
     public Integrator(GameStudio studio) {
@@ -16,7 +15,7 @@ public class Integrator extends Thread{
             while (!Thread.currentThread().isInterrupted()) {
                 drive.getResources();
                 // Sleep while making a game
-                Thread.sleep(secondsPerDay * 1000 * this.daysPerNarrative);
+                Thread.sleep(secondsPerDay * 1000);
                 drive.addGame();
             }   
         } catch(InterruptedException e){

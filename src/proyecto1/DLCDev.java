@@ -20,7 +20,7 @@ public class DLCDev extends Thread {
                 drive.addDLCs();
             }
         } catch(InterruptedException e){
-            System.out.println("KILLED !!");
+            //Thread killed
         }
     }
 }

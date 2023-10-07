@@ -20,7 +20,7 @@ public class NarrativeDev extends Thread {
                 drive.addNarratives();
             }
         } catch (InterruptedException e) {
-            System.out.println("KILLED !!");
+            //Thread killed
         }  
     }
 }

@@ -20,7 +20,7 @@ public class SystemDev extends Thread {
                 drive.addSystems(systemsPerDay);
             }
         } catch(InterruptedException e){
-            System.out.println("KILLED !!");
+            //Thread killed
         }  
     }
 }

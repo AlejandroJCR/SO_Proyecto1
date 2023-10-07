@@ -60,7 +60,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                   <Component id="drive2" max="32767" attributes="0"/>
                                   <Component id="jPanel3" alignment="1" max="32767" attributes="0"/>
@@ -89,9 +89,9 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="117" max="-2" attributes="0"/>
                       <Component id="jButton7" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
                       <Component id="start" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                       <Component id="jToggleButton1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -668,6 +668,9 @@
                               <Component id="director" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="pmMoneyLoss" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="pmFaltas" alignment="0" min="-2" pref="161" max="-2" attributes="0"/>
+                              <Component id="profits" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="costs" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="utilities" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
@@ -693,6 +696,12 @@
                           <Component id="pmFaltas" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="pmMoneyLoss" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="profits" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="costs" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="utilities" min="-2" max="-2" attributes="0"/>
                           <EmptySpace pref="19" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -730,6 +739,21 @@
                 <Component class="javax.swing.JLabel" name="pmMoneyLoss">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Dinero descontado al PM: 0"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="profits">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Ganancias: 0"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="costs">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Costos Operativos: 0"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="utilities">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Utilidades: 0"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -1285,6 +1309,9 @@
                               <Component id="director2" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="pmMoneyLoss2" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="pmFaltas2" alignment="0" min="-2" pref="161" max="-2" attributes="0"/>
+                              <Component id="profits2" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="costs2" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="utilities2" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
@@ -1310,6 +1337,12 @@
                           <Component id="pmFaltas2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="pmMoneyLoss2" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="profits2" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="costs2" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="utilities2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace pref="19" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -1347,6 +1380,21 @@
                 <Component class="javax.swing.JLabel" name="pmMoneyLoss2">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Dinero descontado al PM: 0"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="profits2">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Ganancias: 0"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="costs2">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Costos Operativos: 0"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="utilities2">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Utilidades: 0"/>
                   </Properties>
                 </Component>
               </SubComponents>

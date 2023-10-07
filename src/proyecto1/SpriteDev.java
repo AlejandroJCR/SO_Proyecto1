@@ -20,7 +20,7 @@ public class SpriteDev extends Thread {
                 drive.addSprites(spritesPerDay);
             }
         } catch(InterruptedException e){
-            System.out.println("KILLED !!");
+            //Thread killed
         }  
     }
 }

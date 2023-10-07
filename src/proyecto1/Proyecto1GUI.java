@@ -12,7 +12,6 @@ import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.plot.XYPlot;
 import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
-import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 import java.awt.BasicStroke;
 import java.awt.Color;
@@ -32,8 +31,8 @@ public class Proyecto1GUI extends javax.swing.JFrame {
     }
     
     private void initStudios(){
-        config1 = new Configuration(3, 7, 2, 2, 1, 3, 1, 1, 2);
-        config2 = new Configuration(3, 7, 3, 2, 1, 3, 3, 2, 5);
+        config1 = new Configuration(3, 7, 1, 1, 1, 1, 1, 1, 2);
+        config2 = new Configuration(3, 7, 1, 1, 1, 1, 1, 1, 5);
         
         specsStudio1 = new Specifications(1, 2, 6, 5, 1, 3, 400000, 750000);
         specsStudio2 = new Specifications(2, 3, 4, 6, 5, 6, 450000, 900000);
@@ -197,6 +196,30 @@ public class Proyecto1GUI extends javax.swing.JFrame {
             integratorsCounter2.setText(Integer.toString(amount));
         }
     }
+    
+    public void modProfits(int id, int amount){
+        if(id == 1){
+            profits.setText("Ganancias: " + Integer.toString(amount));
+        }else {
+            profits2.setText("Ganancias: " + Integer.toString(amount));
+        }
+    }
+    
+    public void modCosts(int id, int amount){
+        if(id == 1){
+            costs.setText("Costos Operativos: " + Integer.toString(amount));
+        }else {
+            costs2.setText("Costos Operativos: " + Integer.toString(amount));
+        }
+    }
+    
+    public void modUtilities(int id, int amount){
+        if(id == 1){
+            utilities.setText("Utilidades: " + Integer.toString(amount));
+        }else {
+            utilities2.setText("Utilidades: " + Integer.toString(amount));
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -260,6 +283,9 @@ public class Proyecto1GUI extends javax.swing.JFrame {
         director = new javax.swing.JLabel();
         pmFaltas = new javax.swing.JLabel();
         pmMoneyLoss = new javax.swing.JLabel();
+        profits = new javax.swing.JLabel();
+        costs = new javax.swing.JLabel();
+        utilities = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel49 = new javax.swing.JLabel();
         drive4 = new javax.swing.JPanel();
@@ -313,6 +339,9 @@ public class Proyecto1GUI extends javax.swing.JFrame {
         director2 = new javax.swing.JLabel();
         pmFaltas2 = new javax.swing.JLabel();
         pmMoneyLoss2 = new javax.swing.JLabel();
+        profits2 = new javax.swing.JLabel();
+        costs2 = new javax.swing.JLabel();
+        utilities2 = new javax.swing.JLabel();
         start = new javax.swing.JToggleButton();
         jButton7 = new javax.swing.JButton();
         jToggleButton1 = new javax.swing.JToggleButton();
@@ -681,6 +710,12 @@ public class Proyecto1GUI extends javax.swing.JFrame {
 
         pmMoneyLoss.setText("Dinero descontado al PM: 0");
 
+        profits.setText("Ganancias: 0");
+
+        costs.setText("Costos Operativos: 0");
+
+        utilities.setText("Utilidades: 0");
+
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
@@ -692,7 +727,10 @@ public class Proyecto1GUI extends javax.swing.JFrame {
                     .addComponent(deadline)
                     .addComponent(director)
                     .addComponent(pmMoneyLoss)
-                    .addComponent(pmFaltas, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(pmFaltas, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(profits)
+                    .addComponent(costs)
+                    .addComponent(utilities))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -714,6 +752,12 @@ public class Proyecto1GUI extends javax.swing.JFrame {
                 .addComponent(pmFaltas)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pmMoneyLoss)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(profits)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(costs)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(utilities)
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
@@ -1081,6 +1125,12 @@ public class Proyecto1GUI extends javax.swing.JFrame {
 
         pmMoneyLoss2.setText("Dinero descontado al PM: 0");
 
+        profits2.setText("Ganancias: 0");
+
+        costs2.setText("Costos Operativos: 0");
+
+        utilities2.setText("Utilidades: 0");
+
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
         jPanel10Layout.setHorizontalGroup(
@@ -1092,7 +1142,10 @@ public class Proyecto1GUI extends javax.swing.JFrame {
                     .addComponent(deadline2)
                     .addComponent(director2)
                     .addComponent(pmMoneyLoss2)
-                    .addComponent(pmFaltas2, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(pmFaltas2, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(profits2)
+                    .addComponent(costs2)
+                    .addComponent(utilities2))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1114,6 +1167,12 @@ public class Proyecto1GUI extends javax.swing.JFrame {
                 .addComponent(pmFaltas2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pmMoneyLoss2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(profits2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(costs2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(utilities2)
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
@@ -1145,7 +1204,7 @@ public class Proyecto1GUI extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
+                        .addGap(28, 28, 28)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(drive2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1166,9 +1225,9 @@ public class Proyecto1GUI extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(117, 117, 117)
                 .addComponent(jButton7)
-                .addGap(40, 40, 40)
+                .addGap(51, 51, 51)
                 .addComponent(start)
-                .addGap(54, 54, 54)
+                .addGap(43, 43, 43)
                 .addComponent(jToggleButton1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -1448,6 +1507,8 @@ public class Proyecto1GUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel costs;
+    private javax.swing.JLabel costs2;
     private javax.swing.JLabel deadline;
     private javax.swing.JLabel deadline2;
     private javax.swing.JLabel director;
@@ -1551,6 +1612,8 @@ public class Proyecto1GUI extends javax.swing.JFrame {
     private javax.swing.JLabel pmFaltas2;
     private javax.swing.JLabel pmMoneyLoss;
     private javax.swing.JLabel pmMoneyLoss2;
+    private javax.swing.JLabel profits;
+    private javax.swing.JLabel profits2;
     private javax.swing.JLabel sprites;
     private javax.swing.JLabel sprites2;
     private javax.swing.JLabel spritesDevCounter;
@@ -1558,5 +1621,7 @@ public class Proyecto1GUI extends javax.swing.JFrame {
     private javax.swing.JToggleButton start;
     private javax.swing.JLabel systems;
     private javax.swing.JLabel systems2;
+    private javax.swing.JLabel utilities;
+    private javax.swing.JLabel utilities2;
     // End of variables declaration//GEN-END:variables
 }

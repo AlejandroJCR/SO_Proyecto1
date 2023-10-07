@@ -95,12 +95,12 @@ public class GameStudio extends Thread {
                 daysPassed++;
                 operativeCosts =+ calculateDayCosts();
                 utility = rawProfits - operativeCosts;
+                GUI.modUtilities(id, utility);
                 series.add(daysPassed, utility);
             }   
         } else if(action.equals("reset")) {
             currentDaysUntilDeadline = config.daysUntilDeadlineInit;
         }
-        System.out.println("Deadline " + currentDaysUntilDeadline);
         GUI.modDeadline(id, currentDaysUntilDeadline);
     }
     
@@ -117,13 +117,13 @@ public class GameStudio extends Thread {
         pmFaults++;
         deductedFromPM += 50;
         operativeCosts -= 50;
-        
+        GUI.modCosts(id, operativeCosts);
         GUI.modPmFaults(id, pmFaults, deductedFromPM);
     }
     
     public void deliverGames(){
         rawProfits += drive.getGames();
-        System.out.println("PROFITS ! " + rawProfits);
+        GUI.modProfits(id, rawProfits);
     }
     
     public void changeDirectorActivity(String activity){
@@ -144,7 +144,6 @@ public class GameStudio extends Thread {
     public void removeNarrativeDev(){
         if(isRunning && config.nNarrativeDevs != 1){
             NarrativeDev dev = narrativesDevs.pop();
-            System.out.println(dev);
             dev.interrupt(); 
             config.nNarrativeDevs--;
             config.currentEmployees--;
@@ -238,7 +237,6 @@ public class GameStudio extends Thread {
     }
     
     public void addIntegrator(){
-        System.out.println(config.currentEmployees);
         if(isRunning && config.currentEmployees + 1 <= config.maxEmployees){
             Integrator newIntegrator = new Integrator(this);
             integrators.append(newIntegrator);
@@ -306,19 +304,5 @@ public class GameStudio extends Thread {
         director.start();
         
         GUI.initEmployeesPanel();
-                
-       /*try {
-            Thread.sleep(3 * 1000 * 24);
-            isRunning = false;
-            
-            for(int i=0; i < n; i++){
-                Employee e = employees.get(i);
-                e.join();
-            }
-            
-            System.out.println("END OF SIMULATION");
-        } catch(InterruptedException e){
-             // this part is executed when an exception (in this example InterruptedException) occurs
-        }*/
     }
 }

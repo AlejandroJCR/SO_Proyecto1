@@ -20,7 +20,7 @@ public class LevelDev extends Thread {
                 drive.addLevels();
             }
         } catch(InterruptedException e){
-             // this part is executed when an exception (in this example InterruptedException) occurs
+            //Thread killed
         }
     }
 }

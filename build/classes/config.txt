@@ -1,9 +1,9 @@
 segsPerDay: 2
 deadline: 15
 studio1:
-nNarrativeDevs: 3
+nNarrativeDevs: 2
 nLevelDevs: 3
-nSpriteDevs: 1
+nSpriteDevs: 2
 nSystemDevs: 1
 nDLCDevs: 1
 nIntegrators: 3

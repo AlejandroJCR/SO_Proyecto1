@@ -93,7 +93,8 @@ public class GameStudio extends Thread {
             if(currentDaysUntilDeadline > 0){
                 currentDaysUntilDeadline--;
                 daysPassed++;
-                operativeCosts =+ calculateDayCosts();
+                operativeCosts += calculateDayCosts();
+                GUI.modCosts(id, operativeCosts);
                 utility = rawProfits - operativeCosts;
                 GUI.modUtilities(id, utility);
                 series.add(daysPassed, utility);
